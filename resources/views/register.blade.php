@@ -4,6 +4,7 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 @endsection
 
 @section('content')
@@ -72,8 +73,13 @@
                 {{-- Password --}}
                 <div class="form-group">
                     <label class="form-label" for="password">Kata Sandi</label>
-                    <input class="form-input @error('password') is-invalid @enderror" id="password" type="password"
-                        name="password" placeholder="Min. 8 karakter" required autocomplete="new-password">
+                    <div class="password-wrapper">
+                        <input class="form-input @error('password') is-invalid @enderror" id="password" type="password"
+                            name="password" placeholder="Min. 8 karakter" required autocomplete="new-password">
+                        <span class="toggle-password" onclick="togglePassword('password', this)">
+                            <i class="fa-regular fa-eye"></i>
+                        </span>
+                    </div>
                     @error('password')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -82,8 +88,13 @@
                 {{-- Confirm Password --}}
                 <div class="form-group">
                     <label class="form-label" for="password_confirmation">Konfirmasi Kata Sandi</label>
-                    <input class="form-input" id="password_confirmation" type="password" name="password_confirmation"
-                        placeholder="Ulangi kata sandi" required autocomplete="new-password">
+                    <div class="password-wrapper">
+                        <input class="form-input" id="password_confirmation" type="password" name="password_confirmation"
+                            placeholder="Ulangi kata sandi" required autocomplete="new-password">
+                        <span class="toggle-password" onclick="togglePassword('password_confirmation', this)">
+                            <i class="fa-regular fa-eye"></i>
+                        </span>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn-primary">Daftar Sekarang</button>
@@ -100,5 +111,20 @@
             </div>
         </div>
     </div>
+    <script>
+        function togglePassword(id, element) {
+            const input = document.getElementById(id);
+            const icon = element.querySelector('i');
 
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = "password";
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+    </script>
 @endsection

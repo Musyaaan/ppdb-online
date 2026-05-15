@@ -147,13 +147,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 400);
   }
 
-  
   renderTestimonials();
   setInterval(renderTestimonials, 6000);
 
   // Navbar berubah putih saat discroll
   const navbar = document.querySelector(".navbar");
-
   window.addEventListener("scroll", function () {
     if (window.scrollY > 50) {
       navbar.classList.add("scrolled");
@@ -161,4 +159,15 @@ document.addEventListener("DOMContentLoaded", function () {
       navbar.classList.remove("scrolled");
     }
   });
+
+  // Hero background crossfade
+  const heroBgs = document.querySelectorAll(".hero-bg");
+  let heroCurrent = 0;
+  heroBgs[0].classList.add("active");
+
+  setInterval(() => {
+    heroBgs[heroCurrent].classList.remove("active");
+    heroCurrent = (heroCurrent + 1) % heroBgs.length;
+    heroBgs[heroCurrent].classList.add("active");
+  }, 4000);
 });

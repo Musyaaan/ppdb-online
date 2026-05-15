@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('homepage');
@@ -13,32 +15,9 @@ Route::get('/', function () {
 |--------------------------------------------------------------------------
 */
 
-Route::prefix('ppdb')->name('ppdb.')->group(function () {
-
-    Route::get('/', function () {
-        return redirect()->route('ppdb.jadwal');
-    })->name('index');
-
-    Route::get('/jadwal', function () {
-        return view('ppdb.jadwal');
-    })->name('jadwal');
-
-    Route::get('/persyaratan', function () {
-        return view('ppdb.persyaratan');
-    })->name('persyaratan');
-
-    Route::get('/alur', function () {
-        return view('ppdb.alur');
-    })->name('alur');
-
-    Route::get('/online', function () {
-        return view('ppdb.online');
-    })->name('online');
-
-    Route::get('/faq', function () {
-        return view('ppdb.faq');
-    })->name('faq');
-});
+Route::get('/ppdb', function () {
+    return view('ppdb');
+})->name('ppdb');
 
 /*
 |--------------------------------------------------------------------------
@@ -46,9 +25,15 @@ Route::prefix('ppdb')->name('ppdb.')->group(function () {
 |--------------------------------------------------------------------------
 */
 
-Route::view('/login', 'login')->name('login');
+/* LOGIN */
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+Route::post('/login', [LoginController::class, 'login']);
 
-Route::view('/register', 'register')->name('register');
+/* REGISTER */
+Route::get('/register', [RegisterController::class, 'showRegister'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
 
 /*
 |--------------------------------------------------------------------------
@@ -79,3 +64,11 @@ Route::get('/reset-password', [AuthController::class, 'showResetPassword'])
 /* SAVE NEW PASSWORD */
 Route::post('/reset-password', [AuthController::class, 'resetPassword'])
     ->name('reset.password.post');
+
+Route::get('/galeri', function () {
+    return view('galeri');
+})->name('galeri');
+
+Route::get('/kontak', function () {
+    return view('kontak');
+})->name('kontak');

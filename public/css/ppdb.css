@@ -1,0 +1,517 @@
+/* ── PPDB HERO ── */
+.ppdb-hero {
+    background: var(--gradient-primary);
+    padding: 72px 40px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.ppdb-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(24,188,156,0.08) 0%, transparent 65%);
+}
+
+.ppdb-hero-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--secondary);
+    margin-bottom: 10px;
+    display: block;
+    position: relative;
+}
+
+.ppdb-hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 14px;
+    position: relative;
+}
+
+.ppdb-hero p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    max-width: 520px;
+    margin: 0 auto 28px;
+    line-height: 1.75;
+    position: relative;
+}
+
+/* ── STICKY NAV PPDB ── */
+.ppdb-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 2px solid var(--primary-light);
+    box-shadow: 0 2px 12px rgba(44,62,80,0.08);
+}
+
+.ppdb-nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+}
+
+.ppdb-nav-inner::-webkit-scrollbar { display: none; }
+
+.ppdb-nav-link {
+    padding: 16px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+    letter-spacing: 0.3px;
+}
+
+.ppdb-nav-link:hover,
+.ppdb-nav-link.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+/* ── SECTION SHARED ── */
+.ppdb-section {
+    padding: 72px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.ppdb-section-alt {
+    background: var(--primary-pale);
+}
+
+.ppdb-section-alt-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 72px 40px;
+}
+
+/* ── SECTION HEADER ── */
+.section-header {
+    margin-bottom: 36px;
+}
+
+.section-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--secondary);
+    margin-bottom: 6px;
+}
+
+.section-title {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+/* ── PROFIL ── */
+.profil-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 52px;
+    align-items: center;
+}
+
+.profil-img {
+    background: var(--primary-light);
+    border-radius: 10px;
+    height: 340px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 12px 32px rgba(44,62,80,0.14);
+}
+
+.profil-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.profil-info-list {
+    list-style: none;
+    margin: 0 0 24px;
+}
+
+.profil-info-list li {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--primary-pale);
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.profil-info-list li:last-child { border-bottom: none; }
+
+.profil-info-list li span:first-child {
+    color: var(--text-muted);
+    min-width: 140px;
+    font-size: 13px;
+}
+
+.profil-info-list li span:last-child {
+    font-weight: 600;
+}
+
+.accred-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.accred-badge {
+    background: var(--primary);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 6px 13px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+}
+
+/* ── JADWAL ── */
+.jadwal-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-top: 8px;
+}
+
+.jadwal-card {
+    background: var(--white);
+    border: 1px solid var(--primary-light);
+    border-radius: 10px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.jadwal-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--primary);
+}
+
+.jadwal-card-num {
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 44px;
+    font-weight: 300;
+    color: var(--primary-light);
+    line-height: 1;
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+}
+
+.jadwal-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.jadwal-card .date {
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+}
+
+.jadwal-card .desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.65;
+}
+
+/* ── PERSYARATAN ── */
+.persyaratan-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+}
+
+.persyaratan-box {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 32px 28px;
+    border: 1px solid var(--primary-light);
+}
+
+.persyaratan-box h4 {
+    font-family: "Playfair Display", serif;
+    font-size: 18px;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--primary);
+}
+
+.persyaratan-list {
+    list-style: none;
+}
+
+.persyaratan-list li {
+    font-size: 14px;
+    color: var(--text-muted);
+    padding: 9px 0 9px 28px;
+    position: relative;
+    border-bottom: 1px solid var(--primary-pale);
+    line-height: 1.6;
+}
+
+.persyaratan-list li:last-child { border-bottom: none; }
+
+.persyaratan-list li::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 16px;
+    width: 12px;
+    height: 7px;
+    border-left: 2px solid var(--secondary);
+    border-bottom: 2px solid var(--secondary);
+    transform: rotate(-45deg);
+}
+
+/* ── ALUR ── */
+.alur-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.alur-steps::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 28px;
+    bottom: 28px;
+    width: 2px;
+    background: var(--primary-light);
+}
+
+.alur-step {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+    padding: 20px 0;
+    position: relative;
+}
+
+.step-num {
+    width: 58px;
+    height: 58px;
+    min-width: 58px;
+    background: var(--primary);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 14px rgba(44,62,80,0.22);
+}
+
+.step-body {
+    padding-top: 12px;
+}
+
+.step-body h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+}
+
+.step-body p {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+/* ── FAQ ── */
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.faq-item {
+    border: 1px solid var(--primary-light);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--white);
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 20px 24px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    transition: background 0.2s;
+    font-family: "Source Sans 3", sans-serif;
+}
+
+.faq-question:hover { background: var(--primary-pale); }
+.faq-question.open  { background: var(--primary); color: var(--white); }
+
+.faq-icon {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 400;
+    transition: transform 0.25s;
+}
+
+.faq-question.open .faq-icon { transform: rotate(45deg); }
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s;
+    padding: 0 24px;
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.75;
+}
+
+.faq-answer.open {
+    max-height: 300px;
+    padding: 18px 24px 22px;
+}
+
+/* ── CTA DAFTAR ── */
+.ppdb-cta {
+    background: var(--gradient-primary);
+    text-align: center;
+    padding: 64px 40px;
+}
+
+.ppdb-cta h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 32px;
+    color: var(--white);
+    margin-bottom: 12px;
+}
+
+.ppdb-cta p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 28px;
+}
+
+.btn-daftar {
+    display: inline-block;
+    background: var(--secondary);
+    color: var(--white);
+    padding: 15px 40px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.btn-daftar:hover {
+    background: #14a085;
+    transform: translateY(-2px);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .ppdb-hero h1        { font-size: 28px; }
+    .ppdb-hero           { padding: 52px 24px 40px; }
+
+    .profil-grid,
+    .persyaratan-wrapper { grid-template-columns: 1fr; }
+
+    .jadwal-cards        { grid-template-columns: 1fr; }
+
+    .ppdb-section            { padding: 52px 24px; }
+    .ppdb-section-alt-inner  { padding: 52px 24px; }
+
+    .ppdb-nav-inner { padding: 0 16px; }
+    .ppdb-nav-link  { padding: 14px 16px; }
+}
+
+/* ── ANIMATIONS ── */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.alur-step.reveal {
+    transition-delay: var(--delay, 0s);
+}
+
+/* Jadwal card: animasi + hover tidak bentrok */
+.jadwal-card.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.55s ease, transform 0.55s ease, box-shadow 0.2s;
+    transition-delay: var(--delay, 0s);
+}
+
+.jadwal-card.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.jadwal-card.reveal.visible:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(44,62,80,0.12);
+}

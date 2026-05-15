@@ -97,8 +97,8 @@ body {
 
 /* Alerts */
 .alert-error {
+    text-align: center;
     background: #fdecea;
-    border-left: 3px solid #e74c3c;
     padding: 10px 14px;
     border-radius: 3px;
     font-size: 13px;
@@ -107,6 +107,7 @@ body {
 }
 
 .alert-success {
+    text-align: center;
     background: #d1f2eb;
     border-left: 3px solid var(--secondary);
     padding: 10px 14px;
@@ -282,6 +283,27 @@ body {
     text-align: center;
     font-size: 11px;
     color: var(--text-muted);
+}
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper .form-input {
+    padding-right: 42px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: color 0.2s;
+}
+
+.toggle-password:hover {
+    color: var(--primary);
 }
 
 /* Responsive */

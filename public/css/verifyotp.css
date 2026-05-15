@@ -189,6 +189,7 @@ body {
 
 /* Animated Error */
 .alert-error {
+    text-align: center;
     display: flex;
     align-items: flex-start;
     gap: 12px;
@@ -236,6 +237,7 @@ body {
 
 /* SUCCESS */
 .alert-success {
+    text-align: center;
     background: #d1f2eb;
     color: #0f6e56;
 

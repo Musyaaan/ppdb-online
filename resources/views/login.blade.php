@@ -39,11 +39,11 @@
 
                 <div class="form-group">
                     <label class="form-label" for="email">
-                        Email
+                     Email atau Username
                     </label>
 
                     <input class="form-input @error('email') is-invalid @enderror" id="email" type="email" name="email"
-                        value="{{ old('email') }}" placeholder="Masukkan email anda" required autofocus
+                        value="{{ old('email') }}" placeholder="Masukkan email atau username anda" required autofocus
                         autocomplete="email">
 
                     @error('email')
@@ -116,25 +116,25 @@
         </div>
     </div>
     <script>
-    function togglePassword(id, element) {
+        function togglePassword(id, element) {
 
-        const input = document.getElementById(id);
-        const icon = element.querySelector('i');
+            const input = document.getElementById(id);
+            const icon = element.querySelector('i');
 
-        if (input.type === "password") {
+            if (input.type === "password") {
 
-            input.type = "text";
+                input.type = "text";
 
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-slash');
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
 
-        } else {
+            } else {
 
-            input.type = "password";
+                input.type = "password";
 
-            icon.classList.remove('fa-eye-slash');
-            icon.classList.add('fa-eye');
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
         }
-    }
-</script>
+    </script>
 @endsection

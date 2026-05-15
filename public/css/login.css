@@ -21,6 +21,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 body {
@@ -89,8 +90,8 @@ body {
 
 /* Alert */
 .alert-error {
+    text-align: center;
     background: #fdecea;
-    border-left: 4px solid #e74c3c;
 
     color: #c0392b;
 
@@ -102,6 +103,7 @@ body {
 }
 
 .alert-success {
+    text-align: center;
     background: #d1f2eb;
 
     color: #0f6e56;
