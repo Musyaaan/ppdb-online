@@ -20,7 +20,7 @@ class OtpMail extends Mailable
     public function build()
     {
         return $this
-            ->subject('Kode OTP Reset Password')
+            ->subject('Kode OTP Verifikasi')  // ← ganti ini saja
             ->view('emails.otp');
     }
 }

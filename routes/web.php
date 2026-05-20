@@ -35,6 +35,10 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/register', [RegisterController::class, 'showRegister'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
+Route::get('/register/verify-otp', [RegisterController::class, 'showOtpForm'])->name('register.otp.form');
+Route::post('/register/verify-otp', [RegisterController::class, 'verifyOtp'])->name('register.otp.verify');
+Route::post('/register/resend-otp', [RegisterController::class, 'resendOtp'])->name('register.resend-otp');
+
 /*
 |--------------------------------------------------------------------------
 | FORGOT PASSWORD OTP

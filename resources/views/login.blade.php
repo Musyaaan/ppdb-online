@@ -39,12 +39,12 @@
 
                 <div class="form-group">
                     <label class="form-label" for="email">
-                     Email atau Username
+                        Email atau Username
                     </label>
 
-                    <input class="form-input @error('email') is-invalid @enderror" id="email" type="email" name="email"
+                    <input class="form-input @error('email') is-invalid @enderror" id="email" type="text" name="email"
                         value="{{ old('email') }}" placeholder="Masukkan email atau username anda" required autofocus
-                        autocomplete="email">
+                        autocomplete="username">
 
                     @error('email')
                         <div class="invalid-feedback">
