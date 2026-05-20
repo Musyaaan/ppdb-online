@@ -28,14 +28,14 @@ class LoginController extends Controller
     {
         // VALIDATE INPUT
         $request->validate([
-            'email'    => 'required',
+            'email' => 'required',
             'password' => 'required',
         ], [
-            'email.required'    => 'Email atau username wajib diisi.',
+            'email.required' => 'Email atau username wajib diisi.',
             'password.required' => 'Kata sandi wajib diisi.',
         ]);
 
-        $loginInput    = trim($request->email);
+        $loginInput = trim($request->email);
         $passwordInput = $request->password;
 
         // =========================================================
@@ -49,7 +49,7 @@ class LoginController extends Controller
             ->first();
 
         if ($absensiUser) {
-            $stored  = $absensiUser->password;
+            $stored = $absensiUser->password;
             $loginOk = false;
 
             // Cek password hash atau plaintext
@@ -97,13 +97,13 @@ class LoginController extends Controller
                 $token = Str::random(64);
 
                 DB::connection('absensi')->table('login_tokens')->insert([
-                    'token'      => $token,
-                    'user_id'    => $absensiUser->id_user,
-                    'username'   => $absensiUser->username,
-                    'role'       => $absensiUser->role,
-                    'kelas'      => $absensiUser->kelas ?? null,
-                    'kelas_id'   => $kelasId,
-                    'email'      => $absensiUser->email ?? null,
+                    'token' => $token,
+                    'user_id' => $absensiUser->id_user,
+                    'username' => $absensiUser->username,
+                    'role' => $absensiUser->role,
+                    'kelas' => $absensiUser->kelas ?? null,
+                    'kelas_id' => $kelasId,
+                    'email' => $absensiUser->email ?? null,
                     'expires_at' => now()->addMinutes(2),
                 ]);
 
@@ -123,7 +123,7 @@ class LoginController extends Controller
         // STEP 2: CEK DI DATABASE PPDB (orang tua)
         // =========================================================
 
-        $field    = filter_var($loginInput, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        $field = filter_var($loginInput, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
         $ppdbUser = User::where($field, $loginInput)->first();
 
         if (!$ppdbUser || !Hash::check($passwordInput, $ppdbUser->password)) {
@@ -135,7 +135,7 @@ class LoginController extends Controller
         // Login orang tua via Laravel Auth
         Auth::login($ppdbUser, $request->boolean('remember'));
 
-        return redirect()->route('home');
+        return redirect()->route('dashboard.orangtua');
     }
 
     // =========================================================
