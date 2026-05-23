@@ -77,7 +77,12 @@
     min-width: 0;
 }
 
-.step-circle {
+/* ================================================================
+   STEP CIRCLE — dikelola di sini saja (dipindah dari dashboard.css).
+   Gunakan .step-bar .step-circle agar TIDAK nabrak dengan
+   .progress-tracker .step-circle yang ada di dashboard.css.
+   ================================================================ */
+.step-bar .step-circle {
     width: 42px;
     height: 42px;
     border-radius: 50%;
@@ -96,17 +101,21 @@
 .step-check     { display: none; font-size: 14px; }
 .step-num-text  { display: block; }
 
-.step-item.done .step-circle    { background: var(--secondary); color: var(--white); }
-.step-item.done .step-check     { display: block; }
-.step-item.done .step-num-text  { display: none; }
+.step-item.done .step-bar .step-circle    { background: var(--secondary); color: var(--white); }
+.step-item.done .step-check               { display: block; }
+.step-item.done .step-num-text            { display: none; }
 
-.step-item.active .step-circle  {
+.step-item.active .step-bar .step-circle  {
     background: var(--primary);
     color: var(--white);
     box-shadow: 0 0 0 4px rgba(44, 62, 80, 0.18);
 }
 
-.step-label {
+/* ================================================================
+   STEP LABEL & STATUS — scoped ke .step-bar agar tidak nabrak
+   .progress-tracker .step-label / .step-status di dashboard.css
+   ================================================================ */
+.step-bar .step-label {
     display: block;
     font-size: 13px;
     font-weight: 600;
@@ -117,19 +126,22 @@
     text-overflow: ellipsis;
 }
 
-.step-status {
+.step-bar .step-status {
     display: block;
     font-size: 11px;
     color: var(--text-muted);
     margin-top: 2px;
 }
 
-.step-item.done   .step-status  { color: var(--secondary); }
-.step-item.active .step-status  { color: var(--primary); }
-.step-item.done   .step-label   { color: var(--secondary); }
-.step-item.active .step-label   { color: var(--primary); }
+.step-item.done   .step-bar .step-status  { color: var(--secondary); }
+.step-item.active .step-bar .step-status  { color: var(--primary); }
+.step-item.done   .step-bar .step-label   { color: var(--secondary); }
+.step-item.active .step-bar .step-label   { color: var(--primary); }
 
-.step-line {
+/* ================================================================
+   STEP LINE — scoped ke .step-bar agar tidak nabrak .progress-line
+   ================================================================ */
+.step-bar .step-line {
     flex: 0 0 auto;
     width: 48px;
     height: 3px;
@@ -139,7 +151,7 @@
     transition: background 0.3s ease;
 }
 
-.step-line.done { background: var(--secondary); }
+.step-bar .step-line.done { background: var(--secondary); }
 
 .step-panel        { display: none; }
 .step-panel.active { display: block; }
@@ -238,17 +250,15 @@ textarea.form-control {
 .err-msg.show { display: flex; }
 
 /* ================================================================
-   FIX BUG 1: TANGGAL LAHIR + USIA INLINE
-   .tgl-usia-row menggantikan .tgl-usia-wrapper lama.
-   Layout: date input di kiri (min-width 160px), badge usia
-   di kanan — keduanya sejajar dalam satu baris via flexbox.
-   Badge #usia-inline tampil otomatis saat tanggal dipilih.
+   TANGGAL LAHIR + USIA INLINE
+   Layout: date input di kiri, badge usia di kanan — sejajar via
+   flexbox. Badge #usia-inline tampil otomatis saat tanggal dipilih.
    ================================================================ */
 .tgl-usia-row {
     display: flex;
     align-items: center;
     gap: 10px;
-    flex-wrap: wrap;        /* Wrap ke baris baru di layar sempit */
+    flex-wrap: wrap;
 }
 
 .tgl-usia-row .form-control {
@@ -257,7 +267,42 @@ textarea.form-control {
     min-width: 160px;
 }
 
-/* Badge usia (tampil di kanan input tanggal) */
+/* ---- Field Usia (input readonly di samping tanggal) ---- */
+.usia-field-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.usia-field-wrapper .form-control-usia {
+    padding: 10px 12px;
+    border: 1.5px solid var(--primary-light);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--primary-pale);
+    outline: none;
+    width: 72px;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: default;
+    /* Readonly — tidak ada interaction */
+    pointer-events: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.usia-field-wrapper .usia-satuan {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+/* Badge usia (versi compact, tampil di kanan input tanggal) */
 .usia-inline-box {
     display: inline-flex;
     align-items: center;
@@ -292,7 +337,6 @@ textarea.form-control {
     font-family: 'Segoe UI', sans-serif;
     transition: all 0.2s ease;
     align-self: flex-start;
-    /* FIX BUG 3: pastikan tombol bisa diklik — tidak ada yang block */
     position: relative;
     z-index: 1;
     pointer-events: auto;
@@ -338,12 +382,11 @@ textarea.form-control {
 .form-control.has-prefix:focus { box-shadow: none; }
 
 /* ================================================================
-   FIX BUG 2: RADIO BUTTON
-   Sebelumnya: CSS pakai display:none TAPI JS override dengan
-   position:fixed + pointer-events:none yang membuat input tetap
-   ada di DOM dan bisa block klik.
-   Fix: CSS tetap display:none, JS TIDAK menyentuh style input
-   sama sekali. Handler via event delegation di .radio-group.
+   RADIO BUTTON
+   - Input radio disembunyikan via display:none
+   - Visibilitas & state dikelola JS via class .selected di .radio-btn
+   - CSS dipindahkan dari dashboard.css ke sini agar tidak ada
+     konflik selector antara kedua file
    ================================================================ */
 .radio-group {
     display: flex;
@@ -365,7 +408,6 @@ textarea.form-control {
     transition: all 0.2s ease;
     background: var(--white);
     user-select: none;
-    /* FIX: pastikan label bisa menerima klik */
     pointer-events: auto;
 }
 
@@ -381,12 +423,9 @@ textarea.form-control {
     font-weight: 600;
 }
 
-/* FIX BUG 2: Input radio disembunyikan via display:none — JS tidak
-   akan mengubah ini. Ini sudah cukup; tidak perlu position tricks. */
+/* Input radio: cukup display:none — tidak perlu position tricks */
 .radio-btn input[type="radio"] {
     display: none !important;
-    /* Tidak ada position:absolute, tidak ada pointer-events:none,
-       tidak ada width/height:0 — cukup display:none saja. */
 }
 
 .radio-dot {
@@ -399,8 +438,7 @@ textarea.form-control {
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
-    /* FIX: dot tidak boleh intercept klik */
-    pointer-events: none;
+    pointer-events: none;   /* Dot tidak intercept klik */
 }
 
 .radio-btn.selected .radio-dot {
@@ -419,8 +457,7 @@ textarea.form-control {
 .radio-btn i {
     font-size: 13px;
     opacity: 0.7;
-    /* FIX: icon tidak boleh intercept klik */
-    pointer-events: none;
+    pointer-events: none;   /* Icon tidak intercept klik */
 }
 
 .radio-btn.selected i { opacity: 1; }
@@ -621,16 +658,12 @@ textarea.form-control {
 }
 
 /* ================================================================
-   FIX BUG 4: INPUT MANUAL KELURAHAN & KECAMATAN
-   .kelurahan-custom-input dan .kecamatan-custom-input
-   sudah TIDAK punya style="display:none" di HTML.
+   INPUT MANUAL KELURAHAN & KECAMATAN
    Visibilitas dikelola 100% oleh JS via element.style.display.
-   CSS ini hanya memastikan tidak ada pointer-events atau
-   visibility yang bisa override JS.
    ================================================================ */
 .kelurahan-custom-input,
 .kecamatan-custom-input {
-    pointer-events: auto !important;   /* Jangan sampai ter-override */
+    pointer-events: auto !important;
     cursor: text !important;
 }
 
@@ -643,9 +676,8 @@ textarea.form-control {
         grid-template-columns: 1fr;
     }
 
-    /* FIX BUG 1 mobile: usia badge wrap ke bawah tanggal */
     .tgl-usia-row {
-        flex-direction: row;      /* Tetap baris jika muat */
+        flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
     }
@@ -660,10 +692,16 @@ textarea.form-control {
         flex: 0 0 auto;
     }
 
-    .step-label,
-    .step-status { display: none; }
+    /* Usia field wrapper tetap inline di mobile */
+    .usia-field-wrapper {
+        flex-shrink: 0;
+    }
 
-    .step-line { width: 28px; margin: 0 4px; }
+    /* Step bar: sembunyikan label & status di mobile */
+    .step-bar .step-label,
+    .step-bar .step-status { display: none; }
+
+    .step-bar .step-line { width: 28px; margin: 0 4px; }
 
     .preview-grid { grid-template-columns: 1fr; }
 
@@ -689,4 +727,6 @@ textarea.form-control {
     .step-bar-card { padding: 16px; }
 
     .usia-inline-box { font-size: 11px; padding: 5px 10px; }
+
+    .usia-field-wrapper .form-control-usia { width: 60px; font-size: 13px; }
 }

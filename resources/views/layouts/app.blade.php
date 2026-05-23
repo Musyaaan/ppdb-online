@@ -22,6 +22,7 @@
 
     {{-- JS tambahan dari tiap halaman --}}
     @yield('scripts')
+    @stack('scripts')
 
 </body>
 </html>

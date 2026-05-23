@@ -281,8 +281,8 @@
 
 /* ---------------------------------------------------------
    PROGRESS TRACKER
-   FIX: dibuat spesifik supaya tidak bentrok
-   dengan formulir.css
+   Semua selector di sini scoped ke .progress-tracker agar
+   TIDAK nabrak dengan .step-bar di formulir.css.
    --------------------------------------------------------- */
 
 .progress-tracker {
@@ -298,6 +298,7 @@
     flex: 1;
 }
 
+/* Scoped: hanya berlaku di dalam .progress-tracker */
 .progress-tracker .step-circle {
     width: 42px;
     height: 42px;
@@ -324,6 +325,7 @@
     box-shadow: 0 0 0 4px rgba(44,62,80,0.2);
 }
 
+/* Scoped: hanya berlaku di dalam .progress-tracker */
 .progress-tracker .step-label {
     display: block;
     font-size: 13px;

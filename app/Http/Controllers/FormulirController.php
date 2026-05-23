@@ -14,91 +14,88 @@ class FormulirController extends Controller
     // ─────────────────────────────────────────
     public function index()
     {
-        // Sudah punya pendaftaran aktif (bukan draft) → redirect ke cetak
-        $aktif = DB::table('pendaftaran')
+        $pendaftaran = DB::table('pendaftaran')
             ->where('id_user', Auth::id())
-            ->whereIn('status', ['pending', 'diperbaiki', 'diterima', 'ditolak'])
+            ->whereIn('status', ['pending', 'diperbaiki', 'diterima', 'ditolak', 'draft'])
             ->first();
 
-        if ($aktif) {
-            return redirect()->route('cetak.index')
-                ->with('info', 'Anda sudah memiliki pendaftaran yang sedang diproses.');
-        }
+        $siswa    = $pendaftaran ? DB::table('siswa')->where('id_pendaftaran', $pendaftaran->id_pendaftaran)->first() : null;
+        $orangtua = $pendaftaran ? DB::table('data_orangtua')->where('id_pendaftaran', $pendaftaran->id_pendaftaran)->first() : null;
 
-        // Cek draft (belum submit) → prefill form
-        $draft    = DB::table('pendaftaran')
-                        ->where('id_user', Auth::id())
-                        ->where('status', 'draft')
-                        ->first();
-
-        $siswa    = $draft ? DB::table('siswa')->where('id_pendaftaran', $draft->id_pendaftaran)->first()        : null;
-        $orangtua = $draft ? DB::table('data_orangtua')->where('id_pendaftaran', $draft->id_pendaftaran)->first() : null;
-
-        return view('dashboard.formulir', compact('draft', 'siswa', 'orangtua'));
+        return view('dashboard.formulir', compact('pendaftaran', 'siswa', 'orangtua'));
     }
 
     // ─────────────────────────────────────────
-    // POST /formulir/submit  →  validasi + simpan ke DB
+    // POST /formulir/submit
     // ─────────────────────────────────────────
     public function submit(Request $request)
     {
         // ── Validasi ──────────────────────────────────────────────
         $request->validate([
-            // Data Siswa
-            'nama_siswa'    => 'required|string|max:100',
-            'tgl_lahir'     => 'required|date',
-            'jenis_kelamin' => 'required|in:L,P',
-            'alamat'        => 'required|string',
-            // Data Ortu
-            'nama_ayah'     => 'required|string|max:100',
-            'nama_ibu'      => 'required|string|max:100',
-            'pekerjaan_ayah'=> 'required|string|max:100',
-            'pekerjaan_ibu' => 'required|string|max:100',
-            'no_hp'         => ['required', 'string', 'max:20', 'regex:/^08[0-9]{7,12}$/'],
+            'nama_siswa'     => 'required|string|max:100',
+            'tgl_lahir'      => 'required|date',
+            'jenis_kelamin'  => 'required|in:L,P',
+            'alamat'         => 'required|string',
+            'nama_ayah'      => 'required|string|max:100',
+            'nama_ibu'       => 'required|string|max:100',
+            'pekerjaan_ayah' => 'required|string|max:100',
+            'pekerjaan_ibu'  => 'required|string|max:100',
+            'no_hp'          => ['required', 'string', 'max:20', 'regex:/^08[0-9]{7,12}$/'],
         ], [
-            'nama_siswa.required'    => 'Nama siswa wajib diisi.',
-            'tgl_lahir.required'     => 'Tanggal lahir wajib diisi.',
-            'jenis_kelamin.required' => 'Jenis kelamin wajib dipilih.',
-            'alamat.required'        => 'Alamat wajib diisi.',
-            'nama_ayah.required'     => 'Nama ayah wajib diisi.',
-            'nama_ibu.required'      => 'Nama ibu wajib diisi.',
-            'pekerjaan_ayah.required'=> 'Pekerjaan ayah wajib dipilih.',
-            'pekerjaan_ibu.required' => 'Pekerjaan ibu wajib dipilih.',
-            'no_hp.required'         => 'Nomor HP wajib diisi.',
-            'no_hp.regex'            => 'Format nomor HP tidak valid (contoh: 081234567890).',
+            'nama_siswa.required'     => 'Nama siswa wajib diisi.',
+            'tgl_lahir.required'      => 'Tanggal lahir wajib diisi.',
+            'jenis_kelamin.required'  => 'Jenis kelamin wajib dipilih.',
+            'alamat.required'         => 'Alamat wajib diisi.',
+            'nama_ayah.required'      => 'Nama ayah wajib diisi.',
+            'nama_ibu.required'       => 'Nama ibu wajib diisi.',
+            'pekerjaan_ayah.required' => 'Pekerjaan ayah wajib dipilih.',
+            'pekerjaan_ibu.required'  => 'Pekerjaan ibu wajib dipilih.',
+            'no_hp.required'          => 'Nomor HP wajib diisi.',
+            'no_hp.regex'             => 'Format nomor HP tidak valid (contoh: 081234567890).',
         ]);
 
-        // ── Validasi usia (server-side double check) ──────────────
-        $tglLahir     = Carbon::parse($request->tgl_lahir);
-        $batas        = Carbon::create(now()->year, 7, 1);
-        $totalBulan   = $tglLahir->diffInMonths($batas);
-        $lulusanTK    = $request->input('lulusan_tk') === 'ya';
-        $minBulan     = $lulusanTK ? 80 : 84;
+        // ── Validasi usia (server-side) ───────────────────────────
+        $tglLahir   = Carbon::parse($request->tgl_lahir);
+        $batas      = Carbon::create(now()->year, 7, 1);
+        $totalBulan = $tglLahir->diffInMonths($batas);
+        $lulusanTK  = $request->input('lulusan_tk') === 'ya';
+        $minBulan   = $lulusanTK ? 80 : 84;
 
-        if ($totalBulan < $minBulan) {
+        if ($totalBulan < $minBulan || $totalBulan >= 96) {
             return back()->withInput()
-                ->withErrors(['tgl_lahir' => 'Usia calon siswa belum memenuhi syarat minimal pendaftaran.']);
+                ->withErrors(['tgl_lahir' => 'Usia calon siswa tidak memenuhi syarat pendaftaran (terlalu muda atau terlalu tua).']);
+        }
+
+        // ── Cek status — tolak edit kalau sudah final ─────────────
+        $sudahFinal = DB::table('pendaftaran')
+            ->where('id_user', Auth::id())
+            ->whereIn('status', ['diterima', 'ditolak'])
+            ->first();
+
+        if ($sudahFinal) {
+            return back()->with('error', 'Pendaftaran sudah diproses, tidak dapat diubah.');
         }
 
         // ── Simpan ke DB (transaction) ────────────────────────────
         DB::transaction(function () use ($request) {
             $userId = Auth::id();
 
-            // Cek draft existing
-            $draft = DB::table('pendaftaran')
+            $existing = DB::table('pendaftaran')
                 ->where('id_user', $userId)
-                ->where('status', 'draft')
+                ->whereIn('status', ['pending', 'diperbaiki', 'draft'])
                 ->first();
 
-            // Data siswa — hanya kolom yang ada di tabel
-            $dataSiswa = [
-                'nama_siswa'    => $request->nama_siswa,
-                'tanggal_lahir' => $request->tgl_lahir,
-                'jenis_kelamin' => $request->jenis_kelamin,
-                'alamat'        => $request->alamat,
-            ];
+         
 
-            // Data orang tua — hanya kolom yang ada di tabel
+            $dataSiswa = [
+    'nama_siswa'    => $request->nama_siswa,
+    'tempat_lahir'  => $request->tempat_lahir,
+    'tanggal_lahir' => $request->tgl_lahir,
+    'jenis_kelamin' => $request->jenis_kelamin,
+    'agama'         => $request->agama,
+    'alamat'        => $request->alamat,
+];
+
             $dataOrtu = [
                 'nama_ayah'      => $request->nama_ayah,
                 'nama_ibu'       => $request->nama_ibu,
@@ -107,23 +104,22 @@ class FormulirController extends Controller
                 'no_hp'          => $request->no_hp,
             ];
 
-            if ($draft) {
-                // UPDATE pendaftaran → pending
-                DB::table('pendaftaran')->where('id_pendaftaran', $draft->id_pendaftaran)->update([
-                    'tanggal_daftar' => now()->toDateString(),
-                    'status'         => 'pending',
-                ]);
+            if ($existing) {
+                DB::table('pendaftaran')
+                    ->where('id_pendaftaran', $existing->id_pendaftaran)
+                    ->update([
+                        'tanggal_daftar' => now()->toDateString(),
+                        'status'         => 'pending',
+                    ]);
 
-                $id = $draft->id_pendaftaran;
+                $id = $existing->id_pendaftaran;
 
-                // UPSERT siswa
                 if (DB::table('siswa')->where('id_pendaftaran', $id)->exists()) {
                     DB::table('siswa')->where('id_pendaftaran', $id)->update($dataSiswa);
                 } else {
                     DB::table('siswa')->insert(array_merge($dataSiswa, ['id_pendaftaran' => $id]));
                 }
 
-                // UPSERT data_orangtua
                 if (DB::table('data_orangtua')->where('id_pendaftaran', $id)->exists()) {
                     DB::table('data_orangtua')->where('id_pendaftaran', $id)->update($dataOrtu);
                 } else {
@@ -131,7 +127,6 @@ class FormulirController extends Controller
                 }
 
             } else {
-                // INSERT baru
                 $id = DB::table('pendaftaran')->insertGetId([
                     'id_user'        => $userId,
                     'tanggal_daftar' => now()->toDateString(),
@@ -147,11 +142,6 @@ class FormulirController extends Controller
             ->with('success', 'Pendaftaran berhasil dikirim! Silakan cetak bukti pendaftaran.');
     }
 
-    // ─────────────────────────────────────────
-    // Stub routes yang masih ada di web.php
-    // (tidak dipakai blade tapi harus ada agar
-    //  tidak RouteNotFound saat artisan route:list)
-    // ─────────────────────────────────────────
     public function saveStep1(Request $request) { return redirect()->route('formulir.index'); }
     public function saveStep2(Request $request) { return redirect()->route('formulir.index'); }
     public function saveStep3(Request $request) { return redirect()->route('formulir.index'); }
