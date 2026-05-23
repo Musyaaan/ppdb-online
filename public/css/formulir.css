@@ -1,0 +1,692 @@
+/* =================================================================
+   formulir.css — PPDB SD Negeri Legok III
+   ================================================================= */
+
+.page-title-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.page-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0 0 4px 0;
+}
+
+.page-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 13px;
+    transition: opacity 0.4s ease;
+}
+
+.alert i {
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.alert-danger {
+    background: #fce8e8;
+    color: #c0392b;
+    border-left: 4px solid #e74c3c;
+}
+
+.alert-success {
+    background: var(--secondary-light);
+    color: #0e6655;
+    border-left: 4px solid var(--secondary);
+}
+
+.alert ul {
+    margin: 6px 0 0 16px;
+    padding: 0;
+}
+
+.alert li {
+    margin: 3px 0;
+}
+
+/* ---- Step Bar ---- */
+.step-bar-card {
+    padding: 20px 24px;
+}
+
+.step-bar {
+    display: flex;
+    align-items: center;
+}
+
+.step-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
+.step-circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.step-check     { display: none; font-size: 14px; }
+.step-num-text  { display: block; }
+
+.step-item.done .step-circle    { background: var(--secondary); color: var(--white); }
+.step-item.done .step-check     { display: block; }
+.step-item.done .step-num-text  { display: none; }
+
+.step-item.active .step-circle  {
+    background: var(--primary);
+    color: var(--white);
+    box-shadow: 0 0 0 4px rgba(44, 62, 80, 0.18);
+}
+
+.step-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.step-status {
+    display: block;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.step-item.done   .step-status  { color: var(--secondary); }
+.step-item.active .step-status  { color: var(--primary); }
+.step-item.done   .step-label   { color: var(--secondary); }
+.step-item.active .step-label   { color: var(--primary); }
+
+.step-line {
+    flex: 0 0 auto;
+    width: 48px;
+    height: 3px;
+    background: var(--primary-light);
+    border-radius: 2px;
+    margin: 0 8px;
+    transition: background 0.3s ease;
+}
+
+.step-line.done { background: var(--secondary); }
+
+.step-panel        { display: none; }
+.step-panel.active { display: block; }
+
+/* ---- Form Layout ---- */
+.form-row {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.form-col-2 { grid-template-columns: 1fr 1fr; }
+.form-col-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+
+.label-hint {
+    font-size: 11px;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--text-muted);
+    opacity: 0.8;
+}
+
+.req { color: #e74c3c; margin-left: 2px; }
+
+/* ---- Form Controls ---- */
+.form-control {
+    padding: 10px 14px;
+    border: 1.5px solid var(--primary-light);
+    border-radius: 10px;
+    font-size: 14px;
+    color: var(--text-dark);
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--white);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.form-control:hover  { border-color: #aabccc; }
+
+.form-control:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 3px rgba(24, 188, 156, 0.12);
+}
+
+.form-control.is-error {
+    border-color: #e74c3c;
+    background: #fff8f8;
+}
+
+.form-control.is-error:focus {
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.10);
+}
+
+select.form-control {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236c7a89' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 72px;
+}
+
+/* ---- Error messages ---- */
+.err-msg {
+    font-size: 11px;
+    color: #e74c3c;
+    display: none;
+    gap: 4px;
+    align-items: center;
+}
+
+.err-msg.show { display: flex; }
+
+/* ================================================================
+   FIX BUG 1: TANGGAL LAHIR + USIA INLINE
+   .tgl-usia-row menggantikan .tgl-usia-wrapper lama.
+   Layout: date input di kiri (min-width 160px), badge usia
+   di kanan — keduanya sejajar dalam satu baris via flexbox.
+   Badge #usia-inline tampil otomatis saat tanggal dipilih.
+   ================================================================ */
+.tgl-usia-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;        /* Wrap ke baris baru di layar sempit */
+}
+
+.tgl-usia-row .form-control {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 160px;
+}
+
+/* Badge usia (tampil di kanan input tanggal) */
+.usia-inline-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    line-height: 1.4;
+    flex-shrink: 0;
+}
+
+.usia-ok   { background: #d4edda; color: #0e6655; }
+.usia-warn { background: #fff3cd; color: #856404; }
+.usia-err  { background: #fce8e8; color: #c0392b; }
+
+/* ---- Tombol Maps ---- */
+.btn-gmaps {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    padding: 7px 14px;
+    background: #eaf4fe;
+    color: #1a5276;
+    border: 1.5px solid #aed6f1;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Segoe UI', sans-serif;
+    transition: all 0.2s ease;
+    align-self: flex-start;
+    /* FIX BUG 3: pastikan tombol bisa diklik — tidak ada yang block */
+    position: relative;
+    z-index: 1;
+    pointer-events: auto;
+}
+
+.btn-gmaps:hover    { background: #d6eaf8; border-color: #3498db; color: #154360; }
+.btn-gmaps:disabled { opacity: 0.7; cursor: not-allowed; }
+
+/* ---- Input prefix (+62) ---- */
+.input-prefix-wrapper {
+    display: flex;
+    align-items: stretch;
+    border: 1.5px solid var(--primary-light);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-prefix-wrapper:focus-within {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 3px rgba(24, 188, 156, 0.12);
+}
+
+.input-prefix {
+    padding: 10px 12px;
+    background: var(--primary-pale);
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 600;
+    border-right: 1.5px solid var(--primary-light);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+.form-control.has-prefix {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    flex: 1;
+}
+
+.form-control.has-prefix:focus { box-shadow: none; }
+
+/* ================================================================
+   FIX BUG 2: RADIO BUTTON
+   Sebelumnya: CSS pakai display:none TAPI JS override dengan
+   position:fixed + pointer-events:none yang membuat input tetap
+   ada di DOM dan bisa block klik.
+   Fix: CSS tetap display:none, JS TIDAK menyentuh style input
+   sama sekali. Handler via event delegation di .radio-group.
+   ================================================================ */
+.radio-group {
+    display: flex;
+    gap: 10px;
+}
+
+.radio-btn {
+    position: relative;
+    flex: 1;
+    border: 1.5px solid var(--primary-light);
+    border-radius: 10px;
+    padding: 10px 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-dark);
+    transition: all 0.2s ease;
+    background: var(--white);
+    user-select: none;
+    /* FIX: pastikan label bisa menerima klik */
+    pointer-events: auto;
+}
+
+.radio-btn:hover {
+    border-color: #aabccc;
+    background: var(--primary-pale);
+}
+
+.radio-btn.selected {
+    border-color: var(--secondary);
+    background: rgba(24, 188, 156, 0.06);
+    color: #0e6655;
+    font-weight: 600;
+}
+
+/* FIX BUG 2: Input radio disembunyikan via display:none — JS tidak
+   akan mengubah ini. Ini sudah cukup; tidak perlu position tricks. */
+.radio-btn input[type="radio"] {
+    display: none !important;
+    /* Tidak ada position:absolute, tidak ada pointer-events:none,
+       tidak ada width/height:0 — cukup display:none saja. */
+}
+
+.radio-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-light);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    /* FIX: dot tidak boleh intercept klik */
+    pointer-events: none;
+}
+
+.radio-btn.selected .radio-dot {
+    border-color: var(--secondary);
+    background: var(--secondary);
+}
+
+.radio-btn.selected .radio-dot::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--white);
+}
+
+.radio-btn i {
+    font-size: 13px;
+    opacity: 0.7;
+    /* FIX: icon tidak boleh intercept klik */
+    pointer-events: none;
+}
+
+.radio-btn.selected i { opacity: 1; }
+
+/* ---- Checkbox ---- */
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--text-dark);
+    line-height: 1.6;
+    padding: 16px;
+    background: var(--primary-pale);
+    border-radius: 10px;
+    border: 1.5px solid var(--primary-light);
+    transition: border-color 0.2s;
+}
+
+.checkbox-label:hover { border-color: var(--secondary); }
+.checkbox-label input[type="checkbox"] { display: none; }
+
+.checkbox-box {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-light);
+    border-radius: 6px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    background: var(--white);
+}
+
+.checkbox-label input:checked ~ .checkbox-box {
+    background: var(--secondary);
+    border-color: var(--secondary);
+}
+
+.checkbox-label input:checked ~ .checkbox-box::after {
+    content: '✓';
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* ---- Info boxes ---- */
+.info-box {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.info-box i { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+
+.info-warning   { background: #fff8e1; color: #7d5a00; }
+.info-warning i { color: #f39c12; }
+
+.info-blue      { background: #eaf4fe; color: #1a5276; border-left: 3px solid #3498db; }
+.info-blue i    { color: #3498db; }
+
+/* ---- Divider ---- */
+.form-divider {
+    border: none;
+    border-top: 1px solid var(--primary-light);
+    margin: 24px 0;
+}
+
+/* ---- Collapsible ---- */
+.collapsible-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 12px 0;
+    user-select: none;
+}
+
+.collapsible-header:hover .section-title { color: var(--secondary); }
+
+.collapsible-icon {
+    color: var(--text-muted);
+    transition: transform 0.3s ease;
+    font-size: 14px;
+}
+
+.collapsible-content { display: none; }
+
+/* ---- Form Actions ---- */
+.form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--primary-light);
+}
+
+/* ---- Buttons ---- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 22px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    font-family: 'Segoe UI', sans-serif;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.btn-primary                { background: var(--primary); color: var(--white); }
+.btn-primary:hover          { background: var(--secondary); color: var(--white); }
+
+.btn-outline                { background: var(--white); color: var(--primary); border: 1.5px solid var(--primary-light); }
+.btn-outline:hover          { background: var(--primary-pale); border-color: #aabccc; }
+
+.btn-success                { background: var(--secondary); color: var(--white); }
+.btn-success:hover          { background: #14a085; color: var(--white); }
+
+/* ---- Preview ---- */
+.preview-section { margin-bottom: 4px; }
+
+.preview-section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+}
+
+.preview-section-title i { color: var(--secondary); font-size: 14px; }
+
+.btn-edit-step {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary);
+    background: var(--primary-pale);
+    border: 1px solid var(--primary-light);
+    cursor: pointer;
+    font-family: 'Segoe UI', sans-serif;
+    transition: all 0.2s;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.btn-edit-step:hover { background: var(--primary-light); }
+
+.preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+.preview-item {
+    background: var(--primary-pale);
+    border-radius: 10px;
+    padding: 12px 14px;
+    border: 1px solid var(--primary-light);
+}
+
+.preview-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 5px;
+}
+
+.preview-val {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    word-break: break-word;
+}
+
+/* ================================================================
+   FIX BUG 4: INPUT MANUAL KELURAHAN & KECAMATAN
+   .kelurahan-custom-input dan .kecamatan-custom-input
+   sudah TIDAK punya style="display:none" di HTML.
+   Visibilitas dikelola 100% oleh JS via element.style.display.
+   CSS ini hanya memastikan tidak ada pointer-events atau
+   visibility yang bisa override JS.
+   ================================================================ */
+.kelurahan-custom-input,
+.kecamatan-custom-input {
+    pointer-events: auto !important;   /* Jangan sampai ter-override */
+    cursor: text !important;
+}
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 768px) {
+    .form-col-2,
+    .form-col-3 {
+        grid-template-columns: 1fr;
+    }
+
+    /* FIX BUG 1 mobile: usia badge wrap ke bawah tanggal */
+    .tgl-usia-row {
+        flex-direction: row;      /* Tetap baris jika muat */
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .tgl-usia-row .form-control {
+        width: 100%;
+        min-width: 0;
+        flex: 1 1 auto;
+    }
+
+    .usia-inline-box {
+        flex: 0 0 auto;
+    }
+
+    .step-label,
+    .step-status { display: none; }
+
+    .step-line { width: 28px; margin: 0 4px; }
+
+    .preview-grid { grid-template-columns: 1fr; }
+
+    .form-actions {
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .page-title-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .radio-group { flex-direction: column; }
+
+    .step-bar-card { padding: 16px; }
+
+    .usia-inline-box { font-size: 11px; padding: 5px 10px; }
+}

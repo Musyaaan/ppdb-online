@@ -1,0 +1,275 @@
+/* ---------------------------------------------------------
+   PROFIL GRID
+   --------------------------------------------------------- */
+
+.profil-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+/* ---------------------------------------------------------
+   AVATAR CARD
+   --------------------------------------------------------- */
+
+.profil-avatar-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+}
+
+.profil-avatar-circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--white);
+    font-size: 36px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(44,62,80,0.25);
+}
+
+.profil-avatar-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.profil-avatar-role {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--secondary);
+    background: var(--secondary-light);
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.profil-avatar-meta {
+    width: 100%;
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 1px solid var(--primary-light);
+    padding-top: 16px;
+}
+
+.profil-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text-muted);
+    word-break: break-all;
+}
+
+.profil-meta-item i {
+    color: var(--primary);
+    width: 16px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------
+   FORM COL
+   --------------------------------------------------------- */
+
+.profil-form-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ---------------------------------------------------------
+   FORM
+   --------------------------------------------------------- */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group-full {
+    grid-column: 1 / -1;
+}
+
+.form-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-input {
+    padding: 10px 14px;
+    border: 1.5px solid var(--primary-light);
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--text-dark);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+}
+
+.form-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(44,62,80,0.1);
+}
+
+.form-input.is-error {
+    border-color: #e74c3c;
+}
+
+.form-input-readonly {
+    background: var(--primary-pale);
+    color: var(--text-muted);
+    cursor: not-allowed;
+}
+
+.form-error {
+    font-size: 11px;
+    color: #e74c3c;
+    margin-top: 2px;
+}
+
+/* ---------------------------------------------------------
+   INPUT PASSWORD
+   --------------------------------------------------------- */
+
+.input-password {
+    position: relative;
+}
+
+.input-password .form-input {
+    padding-right: 44px;
+}
+
+.toggle-pw {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.toggle-pw:hover {
+    color: var(--primary);
+}
+
+/* ---------------------------------------------------------
+   FORM ACTIONS
+   --------------------------------------------------------- */
+
+.form-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-save {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 24px;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.btn-save:hover {
+    background: var(--secondary);
+    transform: translateY(-1px);
+}
+
+.btn-danger {
+    background: #c0392b;
+}
+
+.btn-danger:hover {
+    background: #a93226;
+    transform: translateY(-1px);
+}
+
+/* ---------------------------------------------------------
+   ALERTS
+   --------------------------------------------------------- */
+
+.alert-success,
+.alert-error {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.alert-success {
+    background: var(--secondary-light);
+    color: #0e6655;
+    border-left: 4px solid var(--secondary);
+}
+
+.alert-error {
+    background: #fce8e8;
+    color: #c0392b;
+    border-left: 4px solid #e74c3c;
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+   --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+    .profil-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profil-avatar-card {
+        flex-direction: row;
+        text-align: left;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .profil-avatar-meta {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -8,40 +8,33 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FormulirController;
 use App\Http\Controllers\DokumenController;
 use App\Http\Controllers\CetakBuktiController;
+use App\Http\Controllers\ProfilController;
 
-Route::get('/', function () {
-    return view('homepage');
-})->name('home');
+/* ─────────────────────────────────────────────
+   PUBLIC PAGES
+───────────────────────────────────────────── */
+Route::get('/', fn() => view('homepage'))->name('home');
+Route::get('/ppdb', fn() => view('ppdb'))->name('ppdb');
+Route::get('/galeri', fn() => view('galeri'))->name('galeri');
+Route::get('/kontak', fn() => view('kontak'))->name('kontak');
 
-Route::get('/ppdb', function () {
-    return view('ppdb');
-})->name('ppdb');
+/* ─────────────────────────────────────────────
+   AUTH
+───────────────────────────────────────────── */
+Route::get('/login', fn() => view('login'))->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 
-Route::get('/galeri', function () {
-    return view('galeri');
-})->name('galeri');
-
-Route::get('/kontak', function () {
-    return view('kontak');
-})->name('kontak');
-
-/* LOGIN */
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-
-/* LOGOUT */
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-/* REGISTER */
 Route::get('/register', [RegisterController::class, 'showRegister'])->name('register');
-Route::post('/register', [RegisterController::class, 'register']);
+Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
 Route::get('/register/verify-otp', [RegisterController::class, 'showOtpForm'])->name('register.otp.form');
 Route::post('/register/verify-otp', [RegisterController::class, 'verifyOtp'])->name('register.otp.verify');
 Route::post('/register/resend-otp', [RegisterController::class, 'resendOtp'])->name('register.resend-otp');
 
-/* FORGOT PASSWORD */
+/* ─────────────────────────────────────────────
+   FORGOT PASSWORD
+───────────────────────────────────────────── */
 Route::get('/forgot-password', [AuthController::class, 'showForgotPassword'])->name('forgot-password');
 Route::post('/forgot-password', [AuthController::class, 'sendOtp'])->name('forgot-password.send');
 Route::get('/verify-otp', [AuthController::class, 'showVerifyOtp'])->name('verify.otp.page');
@@ -49,7 +42,9 @@ Route::post('/verify-otp', [AuthController::class, 'verifyOtp'])->name('verify.o
 Route::get('/reset-password', [AuthController::class, 'showResetPassword'])->name('reset.password');
 Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('reset.password.post');
 
-/* DASHBOARD & PPDB (AUTH REQUIRED) */
+/* ─────────────────────────────────────────────
+   AUTHENTICATED ROUTES
+───────────────────────────────────────────── */
 Route::middleware(['auth'])->group(function () {
 
     /* DASHBOARD */
@@ -71,4 +66,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cetak-bukti', [CetakBuktiController::class, 'index'])->name('cetak.index');
     Route::get('/cetak-bukti/download', [CetakBuktiController::class, 'download'])->name('cetak.download');
 
+    /* PROFIL */
+    Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
+    Route::put('/profil/update', [ProfilController::class, 'update'])->name('profil.update');
+    Route::put('/profil/password', [ProfilController::class, 'gantiPassword'])->name('profil.password');
 });

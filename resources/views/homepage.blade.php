@@ -68,7 +68,7 @@
                 </div>
             </div>
             <div class="kepsek-img">
-                <img src="{{ asset('image/kepsek.jpg') }}" alt="Kepala Sekolah">
+                <img src="{{ asset('image/sekolahh.jpg') }}" alt="Kepala Sekolah">
             </div>
         </div>
     </div>
@@ -78,7 +78,7 @@
         <div class="about-inner">
             <div class="about-img">
                 <div class="about-img-overlay"></div>
-                <img src="{{ asset('image/foto-sekolah.jpg') }}" alt="Gedung Sekolah"
+                <img src="{{ asset('image/sekolahh.jpg') }}" alt="Gedung Sekolah"
                     style="width:100%; height:100%; object-fit:cover; position:absolute; inset:0;">
                 <span class="about-caption">SD Negeri Legok III</span>
             </div>
