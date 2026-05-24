@@ -89,11 +89,19 @@ class FormulirController extends Controller
 
             $dataSiswa = [
     'nama_siswa'    => $request->nama_siswa,
+    'nik_siswa'     => $request->nik_siswa,
     'tempat_lahir'  => $request->tempat_lahir,
     'tanggal_lahir' => $request->tgl_lahir,
     'jenis_kelamin' => $request->jenis_kelamin,
     'agama'         => $request->agama,
+    'anak_ke'       => $request->anak_ke,
+    'jml_saudara'   => $request->jml_saudara,
     'alamat'        => $request->alamat,
+    'kelurahan'     => $request->kelurahan,
+    'kecamatan'     => $request->kecamatan,
+    'kode_pos'      => $request->kode_pos,
+    'lulusan_tk'    => $request->lulusan_tk,
+    'nama_tk'       => $request->nama_tk,
 ];
 
             $dataOrtu = [

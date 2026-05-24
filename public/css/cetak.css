@@ -1,0 +1,437 @@
+/* ═══════════════════════════════════════════════════
+   cetak.css — Modern Sleek, Dark Accent
+   Layout: halaman biasa (bukan preview A4)
+   Print/PDF: tetap A4, 1 halaman
+   ═══════════════════════════════════════════════════ */
+
+/* ── Action Bar ── */
+.cetak-action-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-cetak {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background 0.18s, transform 0.1s, box-shadow 0.18s;
+    text-decoration: none;
+    font-family: 'Segoe UI', sans-serif;
+    letter-spacing: 0.2px;
+}
+
+.btn-cetak:active { transform: scale(0.97); }
+
+.btn-print { background: var(--primary); color: #fff; }
+.btn-print:hover {
+    background: var(--primary-dark);
+    box-shadow: 0 4px 14px rgba(44,62,80,0.28);
+}
+
+.btn-pdf { background: #e74c3c; color: #fff; }
+.btn-pdf:hover {
+    background: #c0392b;
+    box-shadow: 0 4px 14px rgba(231,76,60,0.3);
+}
+
+/* ── Wrapper (transparan di layar) ── */
+.cetak-preview-wrap {
+    background: transparent;
+    padding: 0;
+    display: block;
+}
+
+/* ══════════════════════════════════════════════════
+   BUKTI — tampil sebagai konten halaman normal
+   ══════════════════════════════════════════════════ */
+.bukti {
+    width: 100%;
+    background: transparent;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ── Header card ── */
+.bukti-header-card {
+    background: var(--primary);
+    border-radius: 16px;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: #fff;
+}
+
+.bukti-logo {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.12);
+    padding: 4px;
+}
+
+.bukti-header-instansi {
+    font-size: 10px;
+    color: rgba(255,255,255,0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    font-weight: 500;
+}
+
+.bukti-header-judul {
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    margin: 3px 0 2px;
+}
+
+.bukti-header-sub {
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+}
+
+.bukti-nomor-box {
+    margin-left: auto;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.bukti-nomor-label {
+    font-size: 9px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bukti-nomor-val {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--secondary);
+    letter-spacing: 2px;
+    margin: 2px 0;
+    display: block;
+}
+
+.bukti-nomor-tgl {
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+}
+
+.bukti-qr {
+    width: 48px;
+    height: 48px;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.07);
+}
+
+/* ── Title strip ── */
+.bukti-title-strip {
+    text-align: center;
+    padding: 4px 0 0;
+}
+
+.bukti-title-inner {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    display: inline-block;
+    padding: 5px 28px;
+    border-radius: 6px;
+}
+
+.bukti-title-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 5px;
+}
+
+/* ── Status bar ── */
+.bukti-status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 14px 20px;
+    border: 1px solid var(--primary-light);
+    border-left: 5px solid var(--primary);
+    box-shadow: 0 2px 8px rgba(44,62,80,0.06);
+}
+
+.bukti-status-label {
+    font-size: 9.5px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.bukti-status-tgl {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-top: 3px;
+}
+
+.bukti-status-val {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 16px;
+    border-radius: 20px;
+}
+
+.s-pending    { background: #fff3cd; color: #856404; }
+.s-diterima   { background: var(--secondary-light); color: #0e6655; }
+.s-ditolak    { background: #fce8e8; color: #c0392b; }
+.s-diperbaiki { background: #fff3cd; color: #856404; }
+.s-draft      { background: var(--primary-light); color: var(--primary); }
+
+/* ── Section card ── */
+.bukti-section {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 20px 24px;
+    border: 1px solid var(--primary-light);
+    box-shadow: 0 2px 8px rgba(44,62,80,0.05);
+}
+
+.bukti-section-title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 12px;
+    margin-bottom: 14px;
+    border-bottom: 2px solid var(--primary-pale);
+}
+
+.bukti-section-title i {
+    font-size: 14px;
+    color: var(--secondary);
+}
+
+/* ── Data grid ── */
+.bukti-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px 16px;
+}
+
+.bukti-row {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 10px;
+    border-radius: 8px;
+    transition: background 0.15s;
+}
+
+.bukti-row:hover { background: var(--primary-pale); }
+.bukti-row.full  { grid-column: 1 / -1; }
+
+.bukti-key {
+    font-size: 9px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.bukti-val {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.4;
+}
+
+.bukti-val-nd {
+    font-size: 13px;
+    color: #bcc4cc;
+    font-style: italic;
+    font-weight: 400;
+}
+
+/* ── Divider (hidden di screen) ── */
+hr.bd { display: none; }
+
+/* ── Dokumen grid ── */
+.bukti-dok-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.bukti-dok-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--primary-pale);
+    border-radius: 10px;
+    padding: 10px 14px;
+    border: 1px solid var(--primary-light);
+}
+
+.bukti-dok-ico {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+}
+
+.dok-ok     { background: var(--secondary-light); color: #0e6655; }
+.dok-wait   { background: #fff3cd; color: #856404; }
+.dok-no     { background: #fce8e8; color: #c0392b; }
+.dok-kosong { background: var(--primary-light); color: var(--text-muted); }
+
+/* ── Catatan admin ── */
+.bukti-catatan {
+    background: #fff8e1;
+    border-left: 4px solid #f39c12;
+    border-radius: 0 10px 10px 0;
+    padding: 12px 16px;
+    font-size: 12px;
+    color: #7d5c00;
+    line-height: 1.6;
+}
+
+/* ── Footer note ── */
+.bukti-footer-note {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    text-align: center;
+    padding: 16px 20px;
+    background: var(--primary-pale);
+    border-radius: 10px;
+    border: 1px dashed var(--primary-light);
+}
+
+/* Watermark hidden di screen */
+.bukti-watermark { display: none; }
+
+
+/* ══════════════════════════════════════════════════
+   PRINT — 1 halaman A4, tidak overflow
+   ══════════════════════════════════════════════════ */
+@media print {
+    body * { visibility: hidden !important; }
+
+    .bukti-print-area,
+    .bukti-print-area * { visibility: visible !important; }
+
+    /* posisi absolute (bukan fixed) agar konten bisa diukur browser */
+    .bukti-print-area {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 210mm !important;
+        padding: 12mm 14mm !important;
+        background: #fff !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .bukti {
+        gap: 6px !important;
+        width: 100% !important;
+    }
+
+    .bukti-header-card {
+        border-radius: 5px !important;
+        padding: 9px 13px !important;
+        gap: 9px !important;
+    }
+    .bukti-logo           { width: 34px !important; height: 34px !important; }
+    .bukti-header-judul   { font-size: 11.5px !important; margin: 1px 0 !important; }
+    .bukti-header-instansi,
+    .bukti-header-sub     { font-size: 7px !important; }
+    .bukti-nomor-val      { font-size: 12px !important; letter-spacing: 1px !important; }
+    .bukti-nomor-label,
+    .bukti-nomor-tgl      { font-size: 7px !important; }
+    .bukti-qr             { width: 34px !important; height: 34px !important; }
+    .bukti-qr i           { font-size: 18px !important; }
+
+    .bukti-title-strip    { padding: 0 !important; }
+    .bukti-title-inner    { font-size: 8px !important; padding: 3px 12px !important; border-width: 1.5px !important; }
+    .bukti-title-sub      { font-size: 7px !important; margin-top: 2px !important; }
+
+    .bukti-status-bar     { padding: 6px 11px !important; border-radius: 5px !important; box-shadow: none !important; }
+    .bukti-status-label   { font-size: 7px !important; }
+    .bukti-status-tgl     { font-size: 9px !important; margin-top: 1px !important; }
+    .bukti-status-val     { font-size: 8.5px !important; padding: 2px 8px !important; }
+
+    .bukti-section        { padding: 9px 13px !important; border-radius: 5px !important; box-shadow: none !important; }
+    .bukti-section-title  { font-size: 7.5px !important; padding-bottom: 5px !important; margin-bottom: 6px !important; }
+    .bukti-section-title i { font-size: 10px !important; }
+
+    .bukti-grid           { gap: 0 8px !important; }
+    .bukti-row            { padding: 2px 4px !important; }
+    .bukti-row:hover      { background: transparent !important; }
+    .bukti-key            { font-size: 6.5px !important; margin-bottom: 1px !important; }
+    .bukti-val,
+    .bukti-val-nd         { font-size: 9px !important; }
+
+    .bukti-dok-grid       { gap: 3px !important; }
+    .bukti-dok-item       { padding: 5px 8px !important; border-radius: 4px !important; gap: 7px !important; }
+    .bukti-dok-ico        { width: 17px !important; height: 17px !important; font-size: 7px !important; }
+    .bukti-dok-item div:first-of-type  { font-size: 8.5px !important; }
+    .bukti-dok-item div:last-of-type   { font-size: 7px !important; margin-top: 0 !important; }
+
+    .bukti-catatan        { font-size: 8px !important; padding: 5px 9px !important; }
+
+    .bukti-footer-note    { font-size: 6.5px !important; padding: 7px 11px !important; border-radius: 4px !important; }
+
+    /* watermark muncul saat print */
+    .bukti-watermark {
+        display: block !important;
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) rotate(-35deg) !important;
+        font-size: 80px !important;
+        font-weight: 900 !important;
+        color: rgba(44,62,80,0.04) !important;
+        letter-spacing: 8px !important;
+        pointer-events: none !important;
+        user-select: none !important;
+        white-space: nowrap !important;
+        z-index: 0 !important;
+    }
+
+    .bukti > *:not(.bukti-watermark) { position: relative; z-index: 1; }
+}
+
+@page {
+    size: A4 portrait;
+    margin: 0;
+}
