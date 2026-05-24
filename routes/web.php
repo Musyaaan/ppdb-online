@@ -63,8 +63,9 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/dokumen/{id}', [DokumenController::class, 'destroy'])->name('dokumen.destroy');
 
     /* CETAK BUKTI */
-    Route::get('/cetak-bukti', [CetakBuktiController::class, 'index'])->name('cetak.index');
-    Route::get('/cetak-bukti/download', [CetakBuktiController::class, 'download'])->name('cetak.download');
+   Route::get('/cetak-bukti',          [CetakBuktiController::class, 'index'])->name('cetak.index');
+   Route::get('/cetak-bukti/print',    [CetakBuktiController::class, 'printOnly'])->name('cetak.print');
+   Route::get('/cetak-bukti/download', [CetakBuktiController::class, 'download'])->name('cetak.download');
 
     /* STATUS PENDAFTARAN */
     Route::get('/status', [StatusController::class, 'index'])->name('status.index');

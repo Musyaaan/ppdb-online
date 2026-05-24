@@ -16,44 +16,42 @@ class DashboardController extends Controller
     // =========================================================
 
     public function index()
-    {
-        $user = Auth::user();
+{
+    $user = Auth::user();
 
-        // AMBIL DATA PENDAFTARAN MILIK USER INI
-        $pendaftaran = Pendaftaran::where('id_user', $user->id_user)->first();
+    $pendaftaran = Pendaftaran::where('id_user', $user->id_user)->first();
 
-        $siswa          = null;
-        $dokumen        = [];
-        $bukti          = null;
-        $progressStep   = 0;
+    $siswa        = null;
+    $dokumen      = collect();
+    $bukti        = null;
+    $progressStep = 0;
 
-        if ($pendaftaran) {
-            $siswa   = \App\Models\Siswa::where('id_pendaftaran', $pendaftaran->id_pendaftaran)->first();
-            $dokumen = Dokumen::where('id_pendaftaran', $pendaftaran->id_pendaftaran)->get();
-            $bukti   = BuktiPendaftaran::where('id_pendaftaran', $pendaftaran->id_pendaftaran)->first();
+    if ($pendaftaran) {
+        $siswa   = \App\Models\Siswa::where('id_pendaftaran', $pendaftaran->id_pendaftaran)->first();
+        $dokumen = Dokumen::where('id_pendaftaran', $pendaftaran->id_pendaftaran)->get();
+        $bukti   = BuktiPendaftaran::where('id_pendaftaran', $pendaftaran->id_pendaftaran)->first();
 
-            // HITUNG PROGRESS STEP
-            // Step 1: Pendaftaran dibuat
-            $progressStep = 1;
+        // Step 1: Formulir sudah diisi
+        $progressStep = 1;
 
-            // Step 2: Dokumen sudah diupload semua
-            if ($dokumen->count() >= 4) {
-                $progressStep = 2;
-            }
-
-            // Step 3: Bukti pendaftaran sudah dicetak
-            if ($bukti) {
-                $progressStep = 3;
-            }
+        // Step 2: 3 dokumen wajib sudah terupload (KK, Akta Kelahiran, KTP Orang Tua)
+        if ($dokumen->whereIn('jenis_dokumen', ['kartu_keluarga', 'akta_kelahiran', 'ktp_orang_tua'])->count() >= 3) {
+            $progressStep = 2;
         }
 
-        return view('dashboard.index', compact(
-            'user',
-            'pendaftaran',
-            'siswa',
-            'dokumen',
-            'bukti',
-            'progressStep'
-        ));
+        // Step 3: Bukti pendaftaran sudah dicetak
+        if ($bukti) {
+            $progressStep = 3;
+        }
+    }
+
+    return view('dashboard.index', compact(
+        'user',
+        'pendaftaran',
+        'siswa',
+        'dokumen',
+        'bukti',
+        'progressStep'
+    ));
     }
 }

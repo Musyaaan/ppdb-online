@@ -255,9 +255,8 @@
                                 @endif
                             </div>
                         </div>
-                        <a href="#" class="menu-card-btn {{ $progressStep < 1 ? 'btn-disabled' : '' }}">
+                        <a href="{{ route('dokumen.index') }}" class="menu-card-btn {{ $progressStep < 1 ? 'btn-disabled' : '' }}">
                             {{ $progressStep >= 2 ? 'Lihat Dokumen' : 'Upload Sekarang' }}
-                            <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
 
@@ -281,9 +280,8 @@
                                 @endif
                             </div>
                         </div>
-                        <a href="#" class="menu-card-btn {{ $progressStep < 2 ? 'btn-disabled' : '' }}">
+                        <a href="{{ route('cetak.index') }}" class="menu-card-btn {{ $progressStep < 2 ? 'btn-disabled' : '' }}">
                             {{ $progressStep >= 3 ? 'Unduh Lagi' : 'Cetak Sekarang' }}
-                            <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
 

@@ -3,12 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Dokumen extends Model
 {
-    public $timestamps    = false;
     protected $table      = 'dokumen';
     protected $primaryKey = 'id_dokumen';
+
+    // Tabel tidak punya created_at / updated_at — pakai tanggal_upload
+    public $timestamps = false;
 
     protected $fillable = [
         'id_pendaftaran',
@@ -18,7 +21,14 @@ class Dokumen extends Model
         'tanggal_upload',
     ];
 
-    public function pendaftaran()
+    // Cast tanggal_upload sebagai Carbon date
+    protected $casts = [
+        'tanggal_upload' => 'date',
+    ];
+
+    // ── Relationships ──────────────────────────────────────────────────────
+
+    public function pendaftaran(): BelongsTo
     {
         return $this->belongsTo(Pendaftaran::class, 'id_pendaftaran', 'id_pendaftaran');
     }

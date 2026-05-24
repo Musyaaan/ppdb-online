@@ -97,12 +97,22 @@ class FormulirController extends Controller
 ];
 
             $dataOrtu = [
-                'nama_ayah'      => $request->nama_ayah,
-                'nama_ibu'       => $request->nama_ibu,
-                'pekerjaan_ayah' => $request->pekerjaan_ayah,
-                'pekerjaan_ibu'  => $request->pekerjaan_ibu,
-                'no_hp'          => $request->no_hp,
-            ];
+    'nama_ayah'       => $request->nama_ayah,
+    'nik_ayah'        => $request->nik_ayah,
+    'nama_ibu'        => $request->nama_ibu,
+    'nik_ibu'         => $request->nik_ibu,
+    'pekerjaan_ayah'  => $request->pekerjaan_ayah,
+    'pendidikan_ayah' => $request->pendidikan_ayah,
+    'pekerjaan_ibu'   => $request->pekerjaan_ibu,
+    'pendidikan_ibu'  => $request->pendidikan_ibu,
+    'no_hp'           => $request->no_hp,
+    'email'           => $request->email,
+    'alamat_ortu'     => $request->alamat_ortu,
+    'nama_wali'       => $request->nama_wali,
+    'hub_wali'        => $request->hub_wali,
+    'nik_wali'        => $request->nik_wali,
+    'no_hp_wali'      => $request->no_hp_wali,
+];
 
             if ($existing) {
                 DB::table('pendaftaran')
@@ -138,8 +148,8 @@ class FormulirController extends Controller
             }
         });
 
-        return redirect()->route('cetak.index')
-            ->with('success', 'Pendaftaran berhasil dikirim! Silakan cetak bukti pendaftaran.');
+        return redirect()->route('dokumen.index')
+    ->with('success', 'Pendaftaran berhasil dikirim! Silakan upload dokumen persyaratan.');
     }
 
     public function saveStep1(Request $request) { return redirect()->route('formulir.index'); }
