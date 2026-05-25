@@ -16,6 +16,7 @@ class BuktiPendaftaran extends Model
         'file_bukti',
         'tanggal_cetak',
         'status_cetak',
+        'sudah_dicetak',
     ];
 
     public function pendaftaran()

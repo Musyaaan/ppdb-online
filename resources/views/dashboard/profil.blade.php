@@ -24,27 +24,23 @@
         </div>
 
         <nav class="sidebar-nav">
-            <a href="{{ route('dashboard.orangtua') }}" class="sidebar-nav-item">
-                <i class="fa-solid fa-house"></i>
-                <span>Dashboard</span>
-            </a>
-            <a href="#" class="sidebar-nav-item">
-                <i class="fa-solid fa-file-pen"></i>
-                <span>Formulir Pendaftaran</span>
-            </a>
-            <a href="#" class="sidebar-nav-item">
-                <i class="fa-solid fa-file-arrow-up"></i>
-                <span>Upload Dokumen</span>
-            </a>
-            <a href="#" class="sidebar-nav-item">
-                <i class="fa-solid fa-print"></i>
-                <span>Cetak Bukti</span>
-            </a>
-            <a href="{{ route('status.index') }}" class="sidebar-nav-item">
-                    <i class="fa-solid fa-info-circle"></i>
-                    <span>Status Pendaftaran</span>
-                </a>
-        </nav>
+    <a href="{{ route('dashboard.orangtua') }}" class="sidebar-nav-item">
+        <i class="fa-solid fa-house"></i>
+        <span>Dashboard</span>
+    </a>
+    <a href="{{ route('formulir.index') }}" class="sidebar-nav-item">
+        <i class="fa-solid fa-file-pen"></i>
+        <span>Formulir Pendaftaran</span>
+    </a>
+    <a href="{{ route('dokumen.index') }}" class="sidebar-nav-item">
+        <i class="fa-solid fa-file-arrow-up"></i>
+        <span>Upload Dokumen</span>
+    </a>
+    <a href="{{ route('cetak.index') }}" class="sidebar-nav-item">
+        <i class="fa-solid fa-print"></i>
+        <span>Cetak Bukti</span>
+    </a>
+</nav>
 
         <div class="sidebar-footer">
             <a href="{{ route('profil') }}" class="sidebar-nav-item active">

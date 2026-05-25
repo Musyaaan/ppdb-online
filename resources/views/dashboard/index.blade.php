@@ -41,10 +41,6 @@
                     <i class="fa-solid fa-print"></i>
                     <span>Cetak Bukti</span>
                 </a>
-                <a href="{{ route('status.index') }}" class="sidebar-nav-item">
-                    <i class="fa-solid fa-info-circle"></i>
-                    <span>Status Pendaftaran</span>
-                </a>
             </nav>
 
             <div class="sidebar-footer">
@@ -104,66 +100,101 @@
                     </h2>
                     <div class="progress-tracker">
 
-                        <div
-                            class="progress-step {{ $progressStep >= 1 ? 'done' : '' }} {{ $progressStep == 0 ? 'active' : '' }}">
-                            <div class="step-circle">
-                                @if($progressStep >= 1)
-                                    <i class="fa-solid fa-check"></i>
-                                @else
-                                    <span>1</span>
-                                @endif
-                            </div>
-                            <div class="step-info">
-                                <span class="step-label">Formulir Pendaftaran</span>
-                                <span class="step-status">
-                                    @if($progressStep >= 1) Selesai @else Belum dimulai @endif
-                                </span>
-                            </div>
-                        </div>
+    {{-- Step 1: Formulir --}}
+    <div class="progress-step {{ $progressStep >= 1 ? 'done' : '' }} {{ $progressStep == 0 ? 'active' : '' }}">
+        <div class="step-circle">
+            @if($progressStep >= 1) <i class="fa-solid fa-check"></i>
+            @else <span>1</span> @endif
+        </div>
+        <div class="step-info">
+            <span class="step-label">Formulir Pendaftaran</span>
+            <span class="step-status">
+                @if($progressStep >= 1) Selesai @else Belum dimulai @endif
+            </span>
+        </div>
+    </div>
 
-                        <div class="progress-line {{ $progressStep >= 2 ? 'done' : '' }}"></div>
+    <div class="progress-line {{ $progressStep >= 2 ? 'done' : '' }}"></div>
 
-                        <div
-                            class="progress-step {{ $progressStep >= 2 ? 'done' : '' }} {{ $progressStep == 1 ? 'active' : '' }}">
-                            <div class="step-circle">
-                                @if($progressStep >= 2)
-                                    <i class="fa-solid fa-check"></i>
-                                @else
-                                    <span>2</span>
-                                @endif
-                            </div>
-                            <div class="step-info">
-                                <span class="step-label">Upload Dokumen</span>
-                                <span class="step-status">
-                                    @if($progressStep >= 2) Selesai
-                                    @elseif($progressStep == 1) Perlu dilengkapi
-                                    @else Menunggu @endif
-                                </span>
-                            </div>
-                        </div>
+    {{-- Step 2: Upload Dokumen --}}
+    <div class="progress-step {{ $progressStep >= 2 ? 'done' : '' }} {{ $progressStep == 1 ? 'active' : '' }}">
+        <div class="step-circle">
+            @if($progressStep >= 2) <i class="fa-solid fa-check"></i>
+            @else <span>2</span> @endif
+        </div>
+        <div class="step-info">
+            <span class="step-label">Upload Dokumen</span>
+            <span class="step-status">
+                @if($progressStep >= 2) Selesai
+                @elseif($progressStep == 1) Perlu dilengkapi
+                @else Menunggu @endif
+            </span>
+        </div>
+    </div>
 
-                        <div class="progress-line {{ $progressStep >= 3 ? 'done' : '' }}"></div>
+    <div class="progress-line {{ $progressStep >= 3 ? 'done' : '' }}"></div>
 
-                        <div
-                            class="progress-step {{ $progressStep >= 3 ? 'done' : '' }} {{ $progressStep == 2 ? 'active' : '' }}">
-                            <div class="step-circle">
-                                @if($progressStep >= 3)
-                                    <i class="fa-solid fa-check"></i>
-                                @else
-                                    <span>3</span>
-                                @endif
-                            </div>
-                            <div class="step-info">
-                                <span class="step-label">Cetak Bukti</span>
-                                <span class="step-status">
-                                    @if($progressStep >= 3) Selesai
-                                    @elseif($progressStep == 2) Siap dicetak
-                                    @else Menunggu @endif
-                                </span>
-                            </div>
-                        </div>
+    {{-- Step 3: Cetak Bukti --}}
+    <div class="progress-step {{ $progressStep >= 3 ? 'done' : '' }} {{ $progressStep == 2 ? 'active' : '' }}">
+        <div class="step-circle">
+            @if($progressStep >= 3) <i class="fa-solid fa-check"></i>
+            @else <span>3</span> @endif
+        </div>
+        <div class="step-info">
+            <span class="step-label">Cetak Bukti</span>
+            <span class="step-status">
+                @if($progressStep >= 3) Selesai
+                @elseif($progressStep == 2) Siap dicetak
+                @else Menunggu @endif
+            </span>
+        </div>
+    </div>
 
-                    </div>
+    <div class="progress-line {{ $progressStep >= 4 ? 'done' : '' }}"></div>
+
+    {{-- Step 4: Verifikasi Admin --}}
+    <div class="progress-step {{ $progressStep >= 4 ? 'done' : '' }} {{ $progressStep == 3 ? 'active' : '' }}">
+        <div class="step-circle">
+            @if($progressStep >= 4) <i class="fa-solid fa-check"></i>
+            @else <span>4</span> @endif
+        </div>
+        <div class="step-info">
+            <span class="step-label">Verifikasi Admin</span>
+            <span class="step-status">
+                @if($progressStep >= 4) Selesai
+                @elseif($progressStep == 3) Sedang diproses
+                @else Menunggu @endif
+            </span>
+        </div>
+    </div>
+
+    <div class="progress-line {{ $progressStep >= 5 ? 'done' : '' }}"></div>
+
+    {{-- Step 5: Status Penerimaan --}}
+    <div class="progress-step {{ $progressStep >= 5 ? 'done' : '' }} {{ $progressStep == 4 ? 'active' : '' }}">
+        <div class="step-circle">
+            @if($progressStep >= 5)
+                @if($pendaftaran && $pendaftaran->status === 'ditolak')
+                    <i class="fa-solid fa-xmark"></i>
+                @else
+                    <i class="fa-solid fa-check"></i>
+                @endif
+            @else <span>5</span> @endif
+        </div>
+        <div class="step-info">
+            <span class="step-label">Status Penerimaan</span>
+            <span class="step-status">
+                @if($progressStep >= 5)
+                    @if($pendaftaran && $pendaftaran->status === 'diterima') Diterima
+                    @elseif($pendaftaran && $pendaftaran->status === 'ditolak') Ditolak
+                    @else Selesai @endif
+                @elseif($progressStep == 4) Menunggu keputusan
+                @else Menunggu @endif
+            </span>
+        </div>
+    </div>
+
+</div>
                 </div>
 
                 {{-- STATUS PENDAFTARAN --}}
@@ -189,7 +220,7 @@
                                     class="status-value">{{ \Carbon\Carbon::parse($pendaftaran->tanggal_daftar)->format('d M Y') }}</span>
                             </div>
                             <div class="status-item">
-                                <span class="status-label">Status</span>
+                                <span class="status-label">Status Pendaftaran</span>
                                 <span class="status-badge status-{{ $pendaftaran->status }}">
                                     {{ ucfirst($pendaftaran->status) }}
                                 </span>
@@ -268,7 +299,7 @@
                         <div class="menu-card-body">
                             <h3 class="menu-card-title">Cetak Bukti Pendaftaran</h3>
                             <p class="menu-card-desc">
-                                Download dan cetak bukti pendaftaran sebagai tanda bukti resmi.
+                                Download bukti pendaftaran agar step 3 bisa selesai dan pendaftaran dianggap sah.
                             </p>
                             <div class="menu-card-meta">
                                 @if($progressStep >= 3)

@@ -281,8 +281,6 @@
 
 /* ---------------------------------------------------------
    PROGRESS TRACKER
-   Semua selector di sini scoped ke .progress-tracker agar
-   TIDAK nabrak dengan .step-bar di formulir.css.
    --------------------------------------------------------- */
 
 .progress-tracker {
@@ -298,7 +296,6 @@
     flex: 1;
 }
 
-/* Scoped: hanya berlaku di dalam .progress-tracker */
 .progress-tracker .step-circle {
     width: 42px;
     height: 42px;
@@ -319,13 +316,18 @@
     color: var(--white);
 }
 
+@keyframes step-pulse {
+    0%   { box-shadow: 0 0 0 0   rgba(44, 62, 80, 0.35); }
+    60%  { box-shadow: 0 0 0 8px rgba(44, 62, 80, 0);    }
+    100% { box-shadow: 0 0 0 0   rgba(44, 62, 80, 0);    }
+}
+
 .progress-tracker .progress-step.active .step-circle {
     background: var(--primary);
     color: var(--white);
-    box-shadow: 0 0 0 4px rgba(44,62,80,0.2);
+    animation: step-pulse 1.8s ease-out infinite;
 }
 
-/* Scoped: hanya berlaku di dalam .progress-tracker */
 .progress-tracker .step-label {
     display: block;
     font-size: 13px;
@@ -491,8 +493,14 @@
     line-height: 1.6;
 }
 
+.menu-card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
 .menu-card-meta {
-    margin-top: 4px;
+    margin-top: auto;
 }
 
 .badge-done {

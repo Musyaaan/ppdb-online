@@ -66,6 +66,8 @@ Route::middleware(['auth'])->group(function () {
    Route::get('/cetak-bukti',          [CetakBuktiController::class, 'index'])->name('cetak.index');
    Route::get('/cetak-bukti/print',    [CetakBuktiController::class, 'printOnly'])->name('cetak.print');
    Route::get('/cetak-bukti/download', [CetakBuktiController::class, 'download'])->name('cetak.download');
+   Route::post('/cetak/mark-done', [CetakBuktiController::class, 'markDone'])
+    ->name('cetak.markDone');
 
     /* STATUS PENDAFTARAN */
     Route::get('/status', [StatusController::class, 'index'])->name('status.index');

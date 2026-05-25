@@ -49,10 +49,6 @@
                     <i class="fa-solid fa-print"></i>
                     <span>Cetak Bukti</span>
                 </a>
-                <a href="{{ route('status.index') }}" class="sidebar-nav-item">
-                    <i class="fa-solid fa-info-circle"></i>
-                    <span>Status Pendaftaran</span>
-                </a>
             </nav>
 
             <div class="sidebar-footer">

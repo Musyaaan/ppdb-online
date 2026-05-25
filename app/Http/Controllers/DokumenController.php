@@ -12,13 +12,14 @@ use Illuminate\Support\Str;
 class DokumenController extends Controller
 {
     private array $jenisLabel = [
-        'kartu_keluarga' => 'Kartu Keluarga (KK)',
-        'akta_kelahiran' => 'Akta Kelahiran',
-        'ktp_orang_tua'  => 'KTP Orang Tua / Wali',
-        'ijazah_tk'      => 'Ijazah TK',
-    ];
+    'kartu_keluarga' => 'Kartu Keluarga (KK)',
+    'akta_kelahiran' => 'Akta Kelahiran',
+    'ktp_orang_tua'  => 'KTP Orang Tua / Wali',
+    'ijazah_tk'      => 'Ijazah TK',
+    'pas_foto'       => 'Pas Foto 3×4',          // ← tambah
+];
 
-    private array $wajib = ['kartu_keluarga', 'akta_kelahiran', 'ktp_orang_tua'];
+    private array $wajib = ['kartu_keluarga', 'akta_kelahiran', 'ktp_orang_tua', 'pas_foto'];
 
     public function index()
     {
@@ -43,7 +44,7 @@ class DokumenController extends Controller
     public function upload(Request $request)
     {
         $request->validate([
-            'jenis_dokumen' => ['required', 'in:kartu_keluarga,akta_kelahiran,ktp_orang_tua,ijazah_tk'],
+'jenis_dokumen' => ['required', 'in:kartu_keluarga,akta_kelahiran,ktp_orang_tua,ijazah_tk,pas_foto'],
             'file'          => ['required', 'file', 'max:5120', 'mimes:jpg,jpeg,png,pdf'],
         ], [
             'jenis_dokumen.required' => 'Pilih jenis dokumen terlebih dahulu.',

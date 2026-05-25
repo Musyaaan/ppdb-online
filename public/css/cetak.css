@@ -22,24 +22,35 @@
     font-weight: 600;
     cursor: pointer;
     border: none;
-    transition: background 0.18s, transform 0.1s, box-shadow 0.18s;
+    transition:
+        background 0.18s,
+        transform 0.1s,
+        box-shadow 0.18s;
     text-decoration: none;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: "Segoe UI", sans-serif;
     letter-spacing: 0.2px;
 }
 
-.btn-cetak:active { transform: scale(0.97); }
-
-.btn-print { background: var(--primary); color: #fff; }
-.btn-print:hover {
-    background: var(--primary-dark);
-    box-shadow: 0 4px 14px rgba(44,62,80,0.28);
+.btn-cetak:active {
+    transform: scale(0.97);
 }
 
-.btn-pdf { background: #e74c3c; color: #fff; }
+.btn-print {
+    background: var(--primary);
+    color: #fff;
+}
+.btn-print:hover {
+    background: var(--primary-dark);
+    box-shadow: 0 4px 14px rgba(44, 62, 80, 0.28);
+}
+
+.btn-pdf {
+    background: #e74c3c;
+    color: #fff;
+}
 .btn-pdf:hover {
     background: #c0392b;
-    box-shadow: 0 4px 14px rgba(231,76,60,0.3);
+    box-shadow: 0 4px 14px rgba(231, 76, 60, 0.3);
 }
 
 /* ── Wrapper (transparan di layar) ── */
@@ -56,7 +67,7 @@
     width: 100%;
     background: transparent;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: "Segoe UI", Arial, sans-serif;
     color: var(--text-dark);
     display: flex;
     flex-direction: column;
@@ -75,18 +86,17 @@
 }
 
 .bukti-logo {
-    width: 52px;
-    height: 52px;
+    width: 65px;
+    height: 65px;
     object-fit: contain;
     flex-shrink: 0;
     border-radius: 10px;
-    background: rgba(255,255,255,0.12);
     padding: 4px;
 }
 
 .bukti-header-instansi {
     font-size: 10px;
-    color: rgba(255,255,255,0.55);
+    color: rgba(255, 255, 255, 0.55);
     text-transform: uppercase;
     letter-spacing: 0.7px;
     font-weight: 500;
@@ -101,7 +111,7 @@
 
 .bukti-header-sub {
     font-size: 11px;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .bukti-nomor-box {
@@ -112,7 +122,7 @@
 
 .bukti-nomor-label {
     font-size: 9px;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -128,19 +138,54 @@
 
 .bukti-nomor-tgl {
     font-size: 10px;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .bukti-qr {
     width: 48px;
     height: 48px;
-    border: 1.5px solid rgba(255,255,255,0.2);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    background: rgba(255,255,255,0.07);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/* ── Pas Foto ── */
+.bukti-pas-foto-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.bukti-pas-foto-img,
+.bukti-pas-foto-empty {
+    width: 64px;
+    height: 80px;
+    border-radius: 6px;
+    object-fit: cover;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+}
+
+.bukti-pas-foto-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.bukti-pas-foto-label {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.5px;
 }
 
 /* ── Title strip ── */
@@ -176,8 +221,7 @@
     border-radius: 12px;
     padding: 14px 20px;
     border: 1px solid var(--primary-light);
-    border-left: 5px solid var(--primary);
-    box-shadow: 0 2px 8px rgba(44,62,80,0.06);
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.06);
 }
 
 .bukti-status-label {
@@ -202,11 +246,26 @@
     border-radius: 20px;
 }
 
-.s-pending    { background: #fff3cd; color: #856404; }
-.s-diterima   { background: var(--secondary-light); color: #0e6655; }
-.s-ditolak    { background: #fce8e8; color: #c0392b; }
-.s-diperbaiki { background: #fff3cd; color: #856404; }
-.s-draft      { background: var(--primary-light); color: var(--primary); }
+.s-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+.s-diterima {
+    background: var(--secondary-light);
+    color: #0e6655;
+}
+.s-ditolak {
+    background: #fce8e8;
+    color: #c0392b;
+}
+.s-diperbaiki {
+    background: #fff3cd;
+    color: #856404;
+}
+.s-draft {
+    background: var(--primary-light);
+    color: var(--primary);
+}
 
 /* ── Section card ── */
 .bukti-section {
@@ -214,7 +273,7 @@
     border-radius: 14px;
     padding: 20px 24px;
     border: 1px solid var(--primary-light);
-    box-shadow: 0 2px 8px rgba(44,62,80,0.05);
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.05);
 }
 
 .bukti-section-title {
@@ -251,8 +310,12 @@
     transition: background 0.15s;
 }
 
-.bukti-row:hover { background: var(--primary-pale); }
-.bukti-row.full  { grid-column: 1 / -1; }
+.bukti-row:hover {
+    background: var(--primary-pale);
+}
+.bukti-row.full {
+    grid-column: 1 / -1;
+}
 
 .bukti-key {
     font-size: 9px;
@@ -278,7 +341,9 @@
 }
 
 /* ── Divider (hidden di screen) ── */
-hr.bd { display: none; }
+hr.bd {
+    display: none;
+}
 
 /* ── Dokumen grid ── */
 .bukti-dok-grid {
@@ -308,10 +373,22 @@ hr.bd { display: none; }
     flex-shrink: 0;
 }
 
-.dok-ok     { background: var(--secondary-light); color: #0e6655; }
-.dok-wait   { background: #fff3cd; color: #856404; }
-.dok-no     { background: #fce8e8; color: #c0392b; }
-.dok-kosong { background: var(--primary-light); color: var(--text-muted); }
+.dok-ok {
+    background: var(--secondary-light);
+    color: #0e6655;
+}
+.dok-wait {
+    background: #fff3cd;
+    color: #856404;
+}
+.dok-no {
+    background: #fce8e8;
+    color: #c0392b;
+}
+.dok-kosong {
+    background: var(--primary-light);
+    color: var(--text-muted);
+}
 
 /* ── Catatan admin ── */
 .bukti-catatan {
@@ -337,17 +414,22 @@ hr.bd { display: none; }
 }
 
 /* Watermark hidden di screen */
-.bukti-watermark { display: none; }
-
+.bukti-watermark {
+    display: none;
+}
 
 /* ══════════════════════════════════════════════════
    PRINT — 1 halaman A4, tidak overflow
    ══════════════════════════════════════════════════ */
 @media print {
-    body * { visibility: hidden !important; }
+    body * {
+        visibility: hidden !important;
+    }
 
     .bukti-print-area,
-    .bukti-print-area * { visibility: visible !important; }
+    .bukti-print-area * {
+        visibility: visible !important;
+    }
 
     /* posisi absolute (bukan fixed) agar konten bisa diukur browser */
     .bukti-print-area {
@@ -371,45 +453,136 @@ hr.bd { display: none; }
         padding: 9px 13px !important;
         gap: 9px !important;
     }
-    .bukti-logo           { width: 34px !important; height: 34px !important; }
-    .bukti-header-judul   { font-size: 11.5px !important; margin: 1px 0 !important; }
+    .bukti-logo {
+        width: 34px !important;
+        height: 34px !important;
+    }
+    .bukti-header-judul {
+        font-size: 11.5px !important;
+        margin: 1px 0 !important;
+    }
     .bukti-header-instansi,
-    .bukti-header-sub     { font-size: 7px !important; }
-    .bukti-nomor-val      { font-size: 12px !important; letter-spacing: 1px !important; }
+    .bukti-header-sub {
+        font-size: 7px !important;
+    }
+    .bukti-nomor-val {
+        font-size: 12px !important;
+        letter-spacing: 1px !important;
+    }
     .bukti-nomor-label,
-    .bukti-nomor-tgl      { font-size: 7px !important; }
-    .bukti-qr             { width: 34px !important; height: 34px !important; }
-    .bukti-qr i           { font-size: 18px !important; }
+    .bukti-nomor-tgl {
+        font-size: 7px !important;
+    }
+    .bukti-qr {
+        width: 34px !important;
+        height: 34px !important;
+    }
+    .bukti-qr i {
+        font-size: 18px !important;
+    }
 
-    .bukti-title-strip    { padding: 0 !important; }
-    .bukti-title-inner    { font-size: 8px !important; padding: 3px 12px !important; border-width: 1.5px !important; }
-    .bukti-title-sub      { font-size: 7px !important; margin-top: 2px !important; }
+    .bukti-pas-foto-img,
+    .bukti-pas-foto-empty {
+        width: 42px !important;
+        height: 52px !important;
+    }
+    .bukti-pas-foto-label {
+        font-size: 7px !important;
+    }
 
-    .bukti-status-bar     { padding: 6px 11px !important; border-radius: 5px !important; box-shadow: none !important; }
-    .bukti-status-label   { font-size: 7px !important; }
-    .bukti-status-tgl     { font-size: 9px !important; margin-top: 1px !important; }
-    .bukti-status-val     { font-size: 8.5px !important; padding: 2px 8px !important; }
+    .bukti-title-strip {
+        padding: 0 !important;
+    }
+    .bukti-title-inner {
+        font-size: 8px !important;
+        padding: 3px 12px !important;
+        border-width: 1.5px !important;
+    }
+    .bukti-title-sub {
+        font-size: 7px !important;
+        margin-top: 2px !important;
+    }
 
-    .bukti-section        { padding: 9px 13px !important; border-radius: 5px !important; box-shadow: none !important; }
-    .bukti-section-title  { font-size: 7.5px !important; padding-bottom: 5px !important; margin-bottom: 6px !important; }
-    .bukti-section-title i { font-size: 10px !important; }
+    .bukti-status-bar {
+        padding: 6px 11px !important;
+        border-radius: 5px !important;
+        box-shadow: none !important;
+    }
+    .bukti-status-label {
+        font-size: 7px !important;
+    }
+    .bukti-status-tgl {
+        font-size: 9px !important;
+        margin-top: 1px !important;
+    }
+    .bukti-status-val {
+        font-size: 8.5px !important;
+        padding: 2px 8px !important;
+    }
 
-    .bukti-grid           { gap: 0 8px !important; }
-    .bukti-row            { padding: 2px 4px !important; }
-    .bukti-row:hover      { background: transparent !important; }
-    .bukti-key            { font-size: 6.5px !important; margin-bottom: 1px !important; }
+    .bukti-section {
+        padding: 9px 13px !important;
+        border-radius: 5px !important;
+        box-shadow: none !important;
+    }
+    .bukti-section-title {
+        font-size: 7.5px !important;
+        padding-bottom: 5px !important;
+        margin-bottom: 6px !important;
+    }
+    .bukti-section-title i {
+        font-size: 10px !important;
+    }
+
+    .bukti-grid {
+        gap: 0 8px !important;
+    }
+    .bukti-row {
+        padding: 2px 4px !important;
+    }
+    .bukti-row:hover {
+        background: transparent !important;
+    }
+    .bukti-key {
+        font-size: 6.5px !important;
+        margin-bottom: 1px !important;
+    }
     .bukti-val,
-    .bukti-val-nd         { font-size: 9px !important; }
+    .bukti-val-nd {
+        font-size: 9px !important;
+    }
 
-    .bukti-dok-grid       { gap: 3px !important; }
-    .bukti-dok-item       { padding: 5px 8px !important; border-radius: 4px !important; gap: 7px !important; }
-    .bukti-dok-ico        { width: 17px !important; height: 17px !important; font-size: 7px !important; }
-    .bukti-dok-item div:first-of-type  { font-size: 8.5px !important; }
-    .bukti-dok-item div:last-of-type   { font-size: 7px !important; margin-top: 0 !important; }
+    .bukti-dok-grid {
+        gap: 3px !important;
+    }
+    .bukti-dok-item {
+        padding: 5px 8px !important;
+        border-radius: 4px !important;
+        gap: 7px !important;
+    }
+    .bukti-dok-ico {
+        width: 17px !important;
+        height: 17px !important;
+        font-size: 7px !important;
+    }
+    .bukti-dok-item div:first-of-type {
+        font-size: 8.5px !important;
+    }
+    .bukti-dok-item div:last-of-type {
+        font-size: 7px !important;
+        margin-top: 0 !important;
+    }
 
-    .bukti-catatan        { font-size: 8px !important; padding: 5px 9px !important; }
+    .bukti-catatan {
+        font-size: 8px !important;
+        padding: 5px 9px !important;
+    }
 
-    .bukti-footer-note    { font-size: 6.5px !important; padding: 7px 11px !important; border-radius: 4px !important; }
+    .bukti-footer-note {
+        font-size: 6.5px !important;
+        padding: 7px 11px !important;
+        border-radius: 4px !important;
+    }
 
     /* watermark muncul saat print */
     .bukti-watermark {
@@ -420,7 +593,7 @@ hr.bd { display: none; }
         transform: translate(-50%, -50%) rotate(-35deg) !important;
         font-size: 80px !important;
         font-weight: 900 !important;
-        color: rgba(44,62,80,0.04) !important;
+        color: rgba(44, 62, 80, 0.04) !important;
         letter-spacing: 8px !important;
         pointer-events: none !important;
         user-select: none !important;
@@ -428,7 +601,10 @@ hr.bd { display: none; }
         z-index: 0 !important;
     }
 
-    .bukti > *:not(.bukti-watermark) { position: relative; z-index: 1; }
+    .bukti > *:not(.bukti-watermark) {
+        position: relative;
+        z-index: 1;
+    }
 }
 
 @page {
