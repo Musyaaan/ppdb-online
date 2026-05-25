@@ -1,59 +1,227 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<div align="center">
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<br>
 
-## About Laravel
+# 🏫 PPDB Online SDN Legok 3
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Sistem Penerimaan Peserta Didik Baru Berbasis Web**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+[![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.x-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
+[![MySQL](https://img.shields.io/badge/MySQL-8.x-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://mysql.com)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.x-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com)
+[![License](https://img.shields.io/badge/Lisensi-Akademik-green?style=for-the-badge)](./LICENSE)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<br>
 
-## Learning Laravel
+> Aplikasi digitalisasi proses PPDB untuk SDN Legok 3 — mempermudah pendaftaran siswa baru secara online, efisien, dan terarsip dengan baik.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+<br>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+</div>
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 📋 Daftar Isi
 
-### Premium Partners
+- [Tentang Proyek](#-tentang-proyek)
+- [Profil Sekolah](#-profil-sekolah)
+- [Latar Belakang](#-latar-belakang)
+- [Fitur Utama](#-fitur-utama)
+- [Persyaratan Pendaftaran](#-persyaratan-pendaftaran)
+- [Kriteria & Ketentuan Seleksi](#-kriteria--ketentuan-seleksi)
+- [Teknologi](#-teknologi)
+- [Instalasi & Menjalankan](#-instalasi--menjalankan)
+- [Akun Admin Default](#-akun-admin-default)
+- [Narasumber & Pengembang](#-narasumber--pengembang)
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 📖 Tentang Proyek
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Sistem PPDB Online SDN Legok 3 adalah aplikasi web yang dikembangkan menggunakan framework **Laravel** untuk mendigitalisasi proses penerimaan peserta didik baru. Sistem ini menggantikan proses manual yang sebelumnya menimbulkan berbagai kendala administratif, menjadi sistem yang terintegrasi, efisien, dan mudah dikelola.
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 🏫 Profil Sekolah
 
-## Security Vulnerabilities
+| Keterangan | Detail |
+|---|---|
+| **Nama Sekolah** | SDN Legok 3 |
+| **Alamat** | Jalan Manungtung, Desa Legok |
+| **Tahun Berdiri** | 1983 |
+| **Kepala Sekolah** | 1 Orang |
+| **Jumlah Guru** | 19 Orang |
+| **Penjaga Sekolah** | 1 Orang |
+| **Total Siswa** | 542 Siswa |
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 🧩 Latar Belakang
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Berdasarkan hasil wawancara dengan pihak sekolah pada **30 Maret 2026**, proses PPDB yang berjalan saat ini masih dilakukan secara manual, sehingga menimbulkan sejumlah kendala:
+
+- 📁 Pengarsipan data masih dilakukan secara manual
+- ⚠️ Ketidaksinkronan data Kartu Keluarga dengan Dukcapil
+- 🚶 Orang tua/wali harus datang langsung untuk menyerahkan berkas
+- 📊 Kesulitan dalam pengelolaan dan rekap data pendaftar
+
+Sistem ini hadir sebagai solusi digital untuk mengatasi seluruh permasalahan tersebut.
+
+---
+
+## ✨ Fitur Utama
+
+### 👤 Untuk Pendaftar (Orang Tua / Wali)
+- **Landing Page** — Informasi lengkap profil dan pengumuman sekolah
+- **Formulir Pendaftaran Online** — Isi data calon siswa secara digital
+- **Upload Dokumen** — Unggah berkas persyaratan langsung dari rumah
+- **Notifikasi Konfirmasi** — Pemberitahuan status pendaftaran secara otomatis
+- **Cetak Bukti Pendaftaran** — Unduh dan cetak tanda bukti pendaftaran
+
+### 🛠️ Untuk Admin / Operator Sekolah
+- **Verifikasi Berkas** — Periksa dan validasi dokumen pendaftar
+- **Manajemen Data Siswa** — Kelola seluruh data peserta didik baru
+- **Rekap Laporan** — Ekspor laporan dalam format **PDF** dan **Excel**
+- **Sistem Arsip Digital** — Penyimpanan dokumen terstruktur dan aman
+
+---
+
+## 📄 Persyaratan Pendaftaran
+
+Dokumen yang **wajib diunggah** oleh pendaftar:
+
+| No | Dokumen | Keterangan |
+|:---:|---|---|
+| 1 | 📋 Kartu Keluarga (KK) | Wajib |
+| 2 | 📜 Akta Kelahiran | Wajib |
+| 3 | 🪪 KTP Orang Tua | Wajib |
+| 4 | 🎓 Ijazah TK | Jika ada |
+
+---
+
+## 📏 Kriteria & Ketentuan Seleksi
+
+### Kriteria Usia
+| Kondisi | Keterangan |
+|---|---|
+| Usia **≥ 7 tahun** | **Wajib diterima** |
+| Usia **≥ 6,8 tahun** | Dapat diterima jika memiliki ijazah TK |
+
+### Mekanisme Seleksi
+- ✅ Menggunakan **sistem zonasi**
+- ✅ Berdasarkan **urutan waktu pendaftaran** apabila kuota penuh
+
+### Ketentuan Kuota
+- 📌 Maksimal **28 siswa per kelas**
+- ❌ Tidak terdapat jalur afirmasi atau perpindahan tugas
+
+---
+
+## 🛠️ Teknologi
+
+| Teknologi | Kegunaan |
+|---|---|
+| **PHP** | Bahasa pemrograman server-side |
+| **Laravel** | Framework utama aplikasi web |
+| **MySQL** | Sistem manajemen basis data |
+| **Bootstrap** | Framework CSS untuk antarmuka |
+| **JavaScript** | Interaktivitas sisi klien |
+
+---
+
+## 🚀 Instalasi & Menjalankan
+
+Pastikan kamu sudah menginstal **PHP**, **Composer**, dan **MySQL** di sistem kamu.
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/username/ppdb-sdn-legok3.git
+cd ppdb-sdn-legok3
+```
+
+### 2. Instal Dependensi
+
+```bash
+composer install
+```
+
+### 3. Konfigurasi Environment
+
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+Lalu edit file `.env` dan sesuaikan konfigurasi database:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=ppdb_sdn_legok3
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 4. Migrasi Database
+
+```bash
+php artisan migrate
+```
+
+> Opsional: jalankan seeder jika tersedia
+> ```bash
+> php artisan db:seed
+> ```
+
+### 5. Jalankan Aplikasi
+
+```bash
+php artisan serve
+```
+
+Akses aplikasi di browser: **[http://localhost:8000](http://localhost:8000)**
+
+---
+
+## 🔑 Akun Admin Default
+
+> ⚠️ **Penting:** Segera ubah password setelah login pertama kali di lingkungan produksi!
+
+```
+Email    : admin@gmail.com
+Password : admin123
+```
+
+---
+
+## 👥 Narasumber & Pengembang
+
+### Narasumber
+| Jabatan | Nama |
+|---|---|
+| Kepala Sekolah | **Deni Wiratna, S.Pd., M.MPd.** |
+
+> Wawancara dilakukan pada **30 Maret 2026** sebagai dasar analisis kebutuhan sistem PPDB Online SDN Legok 3.
+
+### Pengembang
+| Peran | Nama | NIM |
+|---|---|---|
+| Ketua Pelaksana | **Ryan Hidayat** | 231011400395 |
+
+---
+
+## 📝 Lisensi
+
+Proyek ini dibuat untuk keperluan **akademik** dan pengembangan sistem informasi sekolah.  
+Seluruh hak cipta dilindungi oleh pengembang.
+
+---
+
+<div align="center">
+
+Dibuat dengan ❤️ untuk **SDN Legok 3**
+
+</div>
