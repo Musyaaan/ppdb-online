@@ -47,48 +47,45 @@
         </div>
     </div>
 
-    <!-- Kepala Sekolah -->
+    <!-- Kepala Sekolah: foto KIRI, teks KANAN -->
     <div class="section">
         <div class="section-header">
-            <div class="section-tag">Sambutan</div>
-            <div class="section-title">Apa Kata Kepala Sekolah?</div>
+            <div class="section-tag1">Sambutan</div>
+            <div class="section-title1">Apa Kata Kepala Sekolah?</div>
         </div>
         <div class="kepsek-wrapper">
+            <div class="kepsek-img">
+                <img src="{{ asset('image/fotokepsek.jpeg') }}" alt="Kepala Sekolah">
+            </div>
             <div class="kepsek-text">
                 <span class="kepsek-quote">&ldquo;</span>
                 <p>Selamat datang di SD Negeri Legok III. Kami berkomitmen untuk memberikan pendidikan terbaik bagi setiap
-                    siswa
-                    dengan mengedepankan nilai karakter, kedisiplinan, dan semangat belajar.</p>
+                    siswa dengan mengedepankan nilai karakter, kedisiplinan, dan semangat belajar.</p>
                 <p>Dengan dukungan tenaga pendidik yang profesional serta lingkungan belajar yang kondusif, kami berharap
-                    dapat
-                    membentuk generasi yang cerdas, berakhlak mulia, dan siap menghadapi masa depan.</p>
+                    dapat membentuk generasi yang cerdas, berakhlak mulia, dan siap menghadapi masa depan.</p>
                 <div class="kepsek-name">
                     <strong>Deni Wirata, S.Pd., M.MPd.</strong>
                     <span>Kepala Sekolah SDN Legok III</span>
                 </div>
             </div>
-            <div class="kepsek-img">
-                <img src="{{ asset('image/sekolahh.jpg') }}" alt="Kepala Sekolah">
-            </div>
         </div>
     </div>
 
-    <!-- About -->
+    <!-- About: teks KIRI, foto KANAN -->
     <div class="section about-section">
         <div class="about-inner">
+            <div class="about-text">
+                <div class="section-tag">Tentang Sekolah Kami</div>
+                <h2>SDN Legok III: Membangun Masa Depan Gemilang dengan Pendidikan Berkualitas dan Karakter Unggul</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse eveniet ipsum dolor cumque ipsam ullam
+                    ratione officia suscipit eaque architecto?</p>
+                <p>Lorem, ipsum dolor.</p>
+            </div>
             <div class="about-img">
                 <div class="about-img-overlay"></div>
                 <img src="{{ asset('image/sekolahh.jpg') }}" alt="Gedung Sekolah"
                     style="width:100%; height:100%; object-fit:cover; position:absolute; inset:0;">
                 <span class="about-caption">SD Negeri Legok III</span>
-            </div>
-            <div class="about-text">
-                <div class="section-tag">Tentang Sekolah Kami</div>
-                <h2>SDN Legok III: Membangun Masa Depan Gemilang dengan Pendidikan Berkualitas dan Karakter Unggul</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse eveniet ipsum dolor cumque ipsam ullam
-                    ratione
-                    officia suscipit eaque architecto?</p>
-                <p>Lorem, ipsum dolor.</p>
             </div>
         </div>
     </div>
@@ -104,8 +101,7 @@
                 <div class="visi-box">
                     <h3>Visi</h3>
                     <p>Terwujudnya peserta didik yang beriman, bertakwa, berakhlak mulia, berprestasi, berbudaya, dan
-                        berwawasan
-                        lingkungan.</p>
+                        berwawasan lingkungan.</p>
                 </div>
                 <div class="vm-divider"></div>
                 <div class="misi-box">
@@ -117,8 +113,7 @@
                             potensi siswa secara optimal.</li>
                         <li>Meningkatkan prestasi akademik dan non-akademik melalui kegiatan pembelajaran dan
                             ekstrakurikuler yang berkualitas.</li>
-                        <li>Membangun lingkungan sekolah yang bersih, sehat, aman, dan kondusif bagi seluruh warga sekolah.
-                        </li>
+                        <li>Membangun lingkungan sekolah yang bersih, sehat, aman, dan kondusif bagi seluruh warga sekolah.</li>
                         <li>Menjalin kerjasama yang harmonis antara sekolah, orang tua, dan masyarakat demi kemajuan
                             pendidikan.</li>
                     </ul>
@@ -163,8 +158,7 @@
                     <div class="news-tag">Acara</div>
                     <h4>Olimpiade Olahraga Siswa Nasional</h4>
                     <p>Siswa SD Negeri Legok III berpartisipasi dalam ajang Olimpiade Olahraga Siswa Nasional (O2SN) sebagai
-                        wadah
-                        pengembangan bakat dan prestasi di bidang olahraga.</p>
+                        wadah pengembangan bakat dan prestasi di bidang olahraga.</p>
                 </div>
             </div>
         </div>
